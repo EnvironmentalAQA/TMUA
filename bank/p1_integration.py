@@ -45,7 +45,7 @@ III. $\displaystyle\int_{-2}^{2} x^2\,dx = 2\int_{0}^{2} x^2\,dx$""", ROMAN3, "F
 
     Q("INT-10", T, "MM7.2", r"Find $\displaystyle\int \left(x + \dfrac{1}{x}\right)^2 dx$.",
       [r"$\dfrac{x^3}{3} + 2x - \dfrac{1}{x} + c$", r"$\dfrac{x^3}{3} + 2x + \dfrac{1}{x} + c$", r"$\dfrac{x^3}{3} - \dfrac{1}{x} + c$", r"$\dfrac{x^3}{3} + 2x + c$", r"$\dfrac{1}{3}\left(x + \dfrac1x\right)^3 + c$", r"$x^3 + 2x - \dfrac1x + c$"], "A",
-      r"$\left(x + \frac1x\right)^2 = x^2 + 2 + x^{-2}$, which integrates to $\frac{x^3}{3} + 2x - x^{-1} + c$. (Option E is a common error: you cannot integrate a power of a bracket that way.)", diff=1),
+      r"$\left(x + \frac1x\right)^2 = x^2 + 2 + x^{-2}$, which integrates to $\frac{x^3}{3} + 2x - x^{-1} + c$. ($\frac13\left(x + \frac1x\right)^3 + c$ is a common error: you cannot integrate a power of a bracket that way.)", diff=1),
 
     Q("INT-11", T, "MM7.1", r"The region bounded by $y = 4 - x^2$, the $x$-axis and the lines $x = 0$ and $x = 3$ is shaded. Find the total shaded area.",
       [r"$\dfrac{23}{3}$", r"$3$", r"$\dfrac{16}{3}$", r"$\dfrac{7}{3}$", r"$9$", r"$\dfrac{25}{3}$"], "A",

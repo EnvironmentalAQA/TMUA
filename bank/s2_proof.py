@@ -11,7 +11,7 @@ QUESTIONS = [
        r"If $n$ is even then $n^2$ is even and so $n^2 + n$ is even.",
        r"$n^2 + n$ is even because both $n^2$ and $n$ are even.",
        r"Suppose $n^2 + n$ is odd. Then $n$ is odd, so $n^2$ is odd, so $n^2 + n$ is even, which is a contradiction... unless $n$ is even."], "A",
-      r"A covers every $n$ with a general argument. B checks only three cases; C handles only even $n$; D is false for odd $n$; E is incomplete.", diff=1),
+      r"The factorised argument covers every $n$ at once: $n(n+1)$ is a product of consecutive integers, so one factor is even. Checking $n = 1, 2, 3$ is only three cases; 'if $n$ is even ...' leaves odd $n$ untreated; 'both $n^2$ and $n$ are even' is false for odd $n$; and the contradiction attempt ends with an unresolved exception.", diff=1),
 
     Q("PRF-02", T, "Prf1", r"Which of the following is a counterexample to the claim **'if $n$ is a positive integer, then $2^n + 1$ is prime'**?",
       [r"$n = 3$", r"$n = 1$", r"$n = 2$", r"$n = 4$", r"$n = 8$"], "A",
@@ -38,7 +38,7 @@ Which is the correct order?""",
        r"Each odd number is one more than an even number, and the even numbers sum to $n(n-1)$... so the total is $n^2$ since there are $n$ of them: $n(n - 1) + n = n^2$.",
        r"The conjecture is true because $n^2$ is always odd when $n$ is odd.",
        r"Four cases have been checked, which is enough for a pattern."], "A",
-      r"A applies the arithmetic-series formula to all $n$. (C also gives a correct calculation but B, D and E are not justifications.)", diff=2),
+      r"The arithmetic-series argument applies $S_n = \frac n2(2a + (n-1)d)$ to every $n$ and simplifies to $n^2$. (The even-numbers argument also reaches a correct total, but extending the pattern to $25$, the remark about $n^2$ being odd, and 'four cases is enough' are not justifications at all.)", diff=2),
 
     Q("PRF-06", T, "Prf1", r"""Which of the following statements can be disproved by a single counterexample?
 
@@ -68,7 +68,7 @@ Which is the correct order?""",
 
     Q("PRF-10", T, "Prf1", r"Consider the claim: **if $x$ and $y$ are real numbers with $x + y > 10$, then $x > 5$ or $y > 5$.** Which of the following proves it?",
       [r"Suppose $x \leq 5$ and $y \leq 5$. Then $x + y \leq 10$, contradicting $x + y > 10$.", r"If $x > 5$ then the conclusion holds; if $y > 5$ then the conclusion holds.", r"Take $x = 6$, $y = 6$: then $x + y = 12 > 10$ and $x > 5$.", r"Suppose $x > 5$. Then $y > 10 - x$, so $y > 5$.", r"If $x + y > 10$ then the average of $x$ and $y$ is more than $5$, so both exceed $5$."], "A",
-      r"A is proof by contrapositive/contradiction. B assumes the conclusion, C is an example, D proves something false, E's conclusion ('both exceed $5$') is wrong.", diff=2),
+      r"Supposing $x \leq 5$ and $y \leq 5$ and deriving $x + y \leq 10$ is a valid proof by contradiction. 'If $x>5$ then the conclusion holds' assumes the conclusion; $x = y = 6$ is a single example; 'suppose $x>5$, then $y>5$' proves something false; and the averaging argument ends with 'both exceed $5$', which is wrong.", diff=2),
 
     Q("PRF-11", T, "Prf3", r"A student notices that $1 + 2 = 3$, $4 + 5 + 6 = 7 + 8$, $9 + 10 + 11 + 12 = 13 + 14 + 15$ and conjectures that the pattern continues. Which of the following describes the $n$th line of the pattern?",
       [r"The $n$th line starts at $n^2$ and has $n + 1$ numbers on the left and $n$ on the right.", r"The $n$th line starts at $n^2$ and has $n$ numbers on each side.", r"The $n$th line starts at $2n - 1$ and has $n + 1$ numbers on the left.", r"The $n$th line starts at $n^2$ and has $n$ numbers on the left and $n + 1$ on the right.", r"The $n$th line starts at $n(n+1)$ and has $n + 1$ numbers on the left."], "A",
@@ -80,7 +80,7 @@ Which is the correct order?""",
 
     Q("PRF-13", T, "Prf1", r"Which of the following is a correct proof that **the sum of any three consecutive integers is divisible by $3$**?",
       [r"Let the integers be $n - 1$, $n$, $n + 1$. Their sum is $3n$, which is divisible by $3$.", r"$1 + 2 + 3 = 6$, $2 + 3 + 4 = 9$ and $3 + 4 + 5 = 12$ are all divisible by $3$.", r"Let the integers be $n$, $2n$, $3n$. Their sum is $6n$, which is divisible by $3$.", r"Any three integers include one that is a multiple of $3$, so the sum is a multiple of $3$.", r"The middle integer is the mean of the three, so the sum is three times an integer... but this needs the middle integer to be a multiple of $3$."], "A",
-      r"A is general and correct. B checks cases; C uses non-consecutive integers; D's reasoning is invalid (containing a multiple of $3$ does not make the sum a multiple of $3$).", diff=1),
+      r"Writing the three as $n-1, n, n+1$ gives the sum $3n$ for every integer $n$ - general and correct. Checking $1+2+3$, $2+3+4$, $3+4+5$ is only cases; $n, 2n, 3n$ are not consecutive; and 'any three integers include a multiple of $3$' is invalid reasoning (containing a multiple of $3$ does not make the sum one).", diff=1),
 
     Q("PRF-14", T, "Prf1", r"To prove **'if $n^2$ is even then $n$ is even'** by contradiction, which assumption should be made?",
       [r"$n^2$ is even and $n$ is odd.", r"$n$ is even and $n^2$ is odd.", r"$n^2$ is odd.", r"$n$ is odd.", r"$n^2$ is even."], "A",
@@ -120,5 +120,5 @@ III. $S$ contains a negative number.""", ROMAN3, "E",
 
     Q("PRF-20", T, "Prf3", r"$T_n$ denotes the $n$th triangular number $\dfrac{n(n+1)}{2}$. A student observes $T_1 + T_2 = 4$, $T_2 + T_3 = 9$, $T_3 + T_4 = 16$ and conjectures that $T_n + T_{n+1}$ is always a perfect square. Which of the following proves the conjecture?",
       [r"$T_n + T_{n+1} = \dfrac{n(n+1) + (n+1)(n+2)}{2} = \dfrac{(n+1)(2n+2)}{2} = (n+1)^2$", r"$T_4 + T_5 = 25$, which is a square, so the pattern continues.", r"Triangular numbers are always squares.", r"$T_n + T_{n+1} = 2T_n + (n + 1)$, which is a square.", r"$T_{n+1} - T_n = n + 1$, so the sum is a square."], "A",
-      r"Only A is a general algebraic verification.", diff=1),
+      r"Only the algebraic verification $T_n + T_{n+1} = \frac{(n+1)(2n+2)}{2} = (n+1)^2$ is general; the rest check one more case, assert something false, or state a true identity without showing the result.", diff=1),
 ]

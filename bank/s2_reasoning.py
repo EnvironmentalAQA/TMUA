@@ -18,7 +18,7 @@ III. One of $a, b, c$ is divisible by $3$.""", ROMAN3, "H",
 
     Q("RSN-03", T, "Prf5", r"Five friends each shake hands with some of the others (each pair shakes hands at most once). Which of the following is impossible?",
       [r"The numbers of handshakes made by the five friends are $4, 4, 4, 4, 1$.", r"Every friend shakes hands with exactly two others.", r"Every friend shakes hands with exactly four others.", r"The numbers of handshakes made are $1, 1, 2, 2, 2$.", r"Exactly one friend shakes no hands at all."], "A",
-      r"If four people each shook hands with all four others, everyone shook hands with everyone, so the fifth person also made $4$ handshakes, not $1$. The others can happen: B is a pentagon of handshakes, C is everyone with everyone, D is a chain, E leaves one person out.", diff=2),
+      r"If four people each shook hands with all four others, everyone shook hands with everyone, so the fifth person also made $4$ handshakes, not $1$. (The total $4+4+4+4+1 = 17$ is odd, which is a second reason.) The others can happen: 'exactly two each' is a pentagon of handshakes, 'exactly four each' is everyone with everyone, $1,1,2,2,2$ is a chain, and one person shaking no hands just leaves them out.", diff=2),
 
     Q("RSN-04", T, "Prf5", r"$x$ and $y$ are positive integers with $x^2 - y^2 = 45$. How many possible pairs $(x, y)$ are there?",
       ["$3$", "$2$", "$1$", "$4$", "$6$", "$0$"], "A",

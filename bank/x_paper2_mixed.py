@@ -148,7 +148,7 @@ III. $b = 4$""", ROMAN3, "E",
 
     Q("X2-27", "proof", "Prf1", r"Consider the claim: **if $n$ is a positive integer then $n^2 + n + 1$ is odd.** Which of the following is a valid proof?",
       [r"$n^2 + n = n(n + 1)$ is even, being the product of consecutive integers, so $n^2 + n + 1$ is even plus one, which is odd.", r"For $n = 1, 2, 3$ the values are $3, 7, 13$, all odd, so the claim holds.", r"$n^2 + n + 1$ cannot be factorised, so it is odd.", r"If $n$ is odd then $n^2$ is odd and $n$ is odd, so $n^2 + n + 1$ is odd.", r"Suppose $n^2 + n + 1$ is even. Then $n$ is even, which is a contradiction."], "A",
-      r"A is a direct general argument. B only checks cases; C is irrelevant; D is correct for odd $n$ but says nothing about even $n$; E does not reach a contradiction.", paper=2, diff=1),
+      r"The argument from $n^2 + n = n(n+1)$ being even is direct and general. Checking $n = 1,2,3$ is only cases; 'cannot be factorised' is irrelevant to parity; 'if $n$ is odd ...' says nothing about even $n$; and the contradiction attempt never reaches a contradiction, since $n$ may well be even.", paper=2, diff=1),
 
     Q("X2-28", "statistics", "M6.3", r"""A set of five distinct positive integers has median $10$ and mean $10$. Which of the following statements must be true?
 

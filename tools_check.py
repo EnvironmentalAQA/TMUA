@@ -18,6 +18,14 @@ for p in glob.glob(os.path.join(ROOT, "bank", "*.py")):
 from gen import mathtex
 from bank.topics import ALL_SLUGS
 
+# "A is general and correct", "B checks cases", "... but D and E are not" - a bare option letter used as a
+# noun. Deliberately narrow: it must be followed by a verb or conjunction that only fits an option.
+OPTION_LETTER = re.compile(
+    r"(?:\A|(?<=[.;] )|(?<=, )|(?<=\bbut )|(?<=\band )|(?<=\bor ))"          # starts a clause ...
+    r"([A-H])"                                                                # ... a bare capital ...
+    r"(?= (?:is|are|was|were|checks?|handles?|covers?|gives?|uses?|only|assumes?"
+    r"|proves?|does|fails?|works?)\b|[,;]? and [A-H]\b)")                     # ... used as a noun
+
 only = sys.argv[1:]
 seen = {}
 errs = 0
@@ -77,6 +85,12 @@ for p in sorted(glob.glob(os.path.join(ROOT, "bank", "*.py"))):
                 problems.append(f"check() raised {e!r}")
         if "Hmm" in q.solution or "Answer " in q.solution or "re-read" in q.solution.lower():
             problems.append("solution contains working-out chatter")
+        # Options are shuffled at build time, so a solution must describe an option, not name its letter.
+        if not ({"roman", "fixed"} & set(q.tags)):
+            named = sorted(set(OPTION_LETTER.findall(q.solution)))
+            if named:
+                problems.append("solution names option letter(s) " + ", ".join(named)
+                                + " but the options are shuffled - describe the option instead")
         if problems:
             errs += 1
             print(f"{q.id}: " + "; ".join(problems))
