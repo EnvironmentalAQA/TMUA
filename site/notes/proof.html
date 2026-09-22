@@ -63,6 +63,30 @@ ol.opts li.pick{border-color:var(--p1);background:var(--p1-light)}ol.opts li.rig
 details.sol{margin-top:10px;background:var(--sol-bg);border:1px solid var(--sol-line);border-radius:10px;padding:10px 14px}details.sol summary{cursor:pointer;font-weight:700;color:var(--teal-dark)}
 details.sol .src{font-size:.85rem;color:var(--stone);margin-top:8px;border-top:1px dashed var(--sol-line);padding-top:6px}
 .note{background:var(--note-bg);border:1px solid var(--note-line);border-radius:10px;padding:12px 16px;font-size:.95rem}
+/* full teaching solution */
+.fm{margin-top:12px;border-top:1px dashed var(--sol-line);padding-top:10px}
+.fmh{font-family:Fraunces,serif;font-weight:700;color:var(--head);margin-bottom:6px}
+.fm .idea{font-size:.97rem;background:var(--card);border-left:4px solid var(--teal);border-radius:0 8px 8px 0;padding:8px 12px;margin-bottom:10px}
+.fm ol.steps{list-style:none;counter-reset:st;margin:0;padding:0}
+.fm ol.steps li{counter-increment:st;position:relative;padding:6px 0 6px 34px;border-top:1px solid var(--sol-line)}
+.fm ol.steps li:first-child{border-top:0}
+.fm ol.steps li:before{content:counter(st);position:absolute;left:0;top:8px;width:23px;height:23px;border-radius:50%;background:var(--teal);color:#fff;font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Source Sans 3',sans-serif}
+[data-theme=dark] .fm ol.steps li:before{color:#0b1220}
+.fm .do{font-size:.97rem}
+.fm .why{font-size:.9rem;color:var(--stone);margin-top:2px}
+.fm .why:before{content:"why: ";font-weight:700;color:var(--teal-dark)}
+.fm .pit{margin-top:10px;background:var(--bad-light);border:1px solid var(--bad);border-radius:8px;padding:8px 12px;font-size:.92rem}
+.fm .pit b{color:var(--bad);display:block;margin-bottom:2px}.fm .pit ul{margin:0 0 0 18px;padding:0}.fm .pit li{margin:3px 0}
+.fm .take{margin-top:10px;background:var(--gold-light);border:1px solid var(--gold);border-radius:8px;padding:8px 12px;font-size:.93rem}
+.fm .take b{color:var(--head);margin-right:6px}
+.solq{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:18px 0}
+.solq .qh{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:8px}
+.solq .qh .num{font-family:Fraunces,serif;font-weight:700;color:var(--head);font-size:1.1rem}.solq .meta{font-size:.82rem;color:var(--stone)}
+.solq ol.opts{list-style:none;padding:0;margin:10px 0;display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;font-size:.95rem}@media(max-width:720px){.solq ol.opts{grid-template-columns:1fr}}
+.solq ol.opts li{display:flex;gap:8px;padding:3px 8px;border-radius:6px}.solq ol.opts li.right{background:var(--ok-light);font-weight:600}
+.solq ol.opts li .lt{font-weight:700;font-family:Fraunces,serif;color:var(--teal-dark);min-width:16px}
+.solq .quick{background:var(--sol-bg);border:1px solid var(--sol-line);border-radius:8px;padding:8px 12px;margin:8px 0;font-size:.95rem}
+.solq .quick b{color:var(--teal-dark)}
 footer{background:var(--navy);color:rgba(255,255,255,.75);padding:26px 0;font-size:.88rem;margin-top:40px}footer a{color:#fff}
 /* progress */
 .st{display:inline-flex;gap:4px;margin-left:auto}.st button{font-family:inherit;font-size:.78rem;border:1px solid var(--line);background:var(--paper);color:var(--stone);border-radius:999px;padding:2px 10px;cursor:pointer}
@@ -131,7 +155,7 @@ body{background:#fff;color:#000;font-size:12pt}.hero{background:#fff!important;c
 ol.opts li{background:#fff;border-color:#bbb}a{color:#000;text-decoration:none}}
 </style></head>
 <body><header class="top"><div class="wrap"><a class="brand" href="../index.html"><span class="sig">&Sigma;</span> TMUA Practice</a>
-<nav><a href="../index.html" class="">Home</a><a href="../topics.html" class="">Topics</a><a href="../notes.html" class="on">Notes</a><a href="../papers.html" class="">Mock papers</a><a href="../official.html" class="">Past papers</a><a href="../practice.html" class="">Practice</a><a href="../planner.html" class="">Planner</a><a href="../search.html" title="Search">&#128269;</a><button class="icon-btn" id="themeBtn">&#9790; Dark</button></nav></div></header>
+<nav><a href="../index.html" class="">Home</a><a href="../topics.html" class="">Topics</a><a href="../notes.html" class="on">Notes</a><a href="../solutions.html" class="">Solutions</a><a href="../papers.html" class="">Mock papers</a><a href="../official.html" class="">Past papers</a><a href="../practice.html" class="">Practice</a><a href="../planner.html" class="">Planner</a><a href="../search.html" title="Search">&#128269;</a><button class="icon-btn" id="themeBtn">&#9790; Dark</button></nav></div></header>
 <section class="hero p2"><div class="wrap"><div class="crumbs"><a href="../index.html">Home</a><span>&rsaquo;</span><a href="../notes.html">Notes</a><span>&rsaquo;</span>Mathematical proof</div><h1>Mathematical proof</h1><p>Revision notes &middot; spec Prf1-Prf4</p><span class="pill">Section 2: Mathematical reasoning (Paper 2 only)</span></div></section>
 <main><div class="wrap"><div class="notes">
 <div class="links" style="margin:6px 0 14px"><a href="../topic/proof.html">&#9998; 21 practice questions</a><a href="../quickfire.html?topic=proof">&#9889; Quick-fire</a><a href="../facts.html?topic=proof">Formula cards</a></div>

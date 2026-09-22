@@ -80,6 +80,30 @@ ol.opts li.pick{border-color:var(--p1);background:var(--p1-light)}ol.opts li.rig
 details.sol{margin-top:10px;background:var(--sol-bg);border:1px solid var(--sol-line);border-radius:10px;padding:10px 14px}details.sol summary{cursor:pointer;font-weight:700;color:var(--teal-dark)}
 details.sol .src{font-size:.85rem;color:var(--stone);margin-top:8px;border-top:1px dashed var(--sol-line);padding-top:6px}
 .note{background:var(--note-bg);border:1px solid var(--note-line);border-radius:10px;padding:12px 16px;font-size:.95rem}
+/* full teaching solution */
+.fm{margin-top:12px;border-top:1px dashed var(--sol-line);padding-top:10px}
+.fmh{font-family:Fraunces,serif;font-weight:700;color:var(--head);margin-bottom:6px}
+.fm .idea{font-size:.97rem;background:var(--card);border-left:4px solid var(--teal);border-radius:0 8px 8px 0;padding:8px 12px;margin-bottom:10px}
+.fm ol.steps{list-style:none;counter-reset:st;margin:0;padding:0}
+.fm ol.steps li{counter-increment:st;position:relative;padding:6px 0 6px 34px;border-top:1px solid var(--sol-line)}
+.fm ol.steps li:first-child{border-top:0}
+.fm ol.steps li:before{content:counter(st);position:absolute;left:0;top:8px;width:23px;height:23px;border-radius:50%;background:var(--teal);color:#fff;font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Source Sans 3',sans-serif}
+[data-theme=dark] .fm ol.steps li:before{color:#0b1220}
+.fm .do{font-size:.97rem}
+.fm .why{font-size:.9rem;color:var(--stone);margin-top:2px}
+.fm .why:before{content:"why: ";font-weight:700;color:var(--teal-dark)}
+.fm .pit{margin-top:10px;background:var(--bad-light);border:1px solid var(--bad);border-radius:8px;padding:8px 12px;font-size:.92rem}
+.fm .pit b{color:var(--bad);display:block;margin-bottom:2px}.fm .pit ul{margin:0 0 0 18px;padding:0}.fm .pit li{margin:3px 0}
+.fm .take{margin-top:10px;background:var(--gold-light);border:1px solid var(--gold);border-radius:8px;padding:8px 12px;font-size:.93rem}
+.fm .take b{color:var(--head);margin-right:6px}
+.solq{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:18px 0}
+.solq .qh{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:8px}
+.solq .qh .num{font-family:Fraunces,serif;font-weight:700;color:var(--head);font-size:1.1rem}.solq .meta{font-size:.82rem;color:var(--stone)}
+.solq ol.opts{list-style:none;padding:0;margin:10px 0;display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;font-size:.95rem}@media(max-width:720px){.solq ol.opts{grid-template-columns:1fr}}
+.solq ol.opts li{display:flex;gap:8px;padding:3px 8px;border-radius:6px}.solq ol.opts li.right{background:var(--ok-light);font-weight:600}
+.solq ol.opts li .lt{font-weight:700;font-family:Fraunces,serif;color:var(--teal-dark);min-width:16px}
+.solq .quick{background:var(--sol-bg);border:1px solid var(--sol-line);border-radius:8px;padding:8px 12px;margin:8px 0;font-size:.95rem}
+.solq .quick b{color:var(--teal-dark)}
 footer{background:var(--navy);color:rgba(255,255,255,.75);padding:26px 0;font-size:.88rem;margin-top:40px}footer a{color:#fff}
 /* progress */
 .st{display:inline-flex;gap:4px;margin-left:auto}.st button{font-family:inherit;font-size:.78rem;border:1px solid var(--line);background:var(--paper);color:var(--stone);border-radius:999px;padding:2px 10px;cursor:pointer}
@@ -229,8 +253,8 @@ window.TM.timer=function(key,total,el,onEnd){
 })();
 """
 
-NAV = [("index.html", "Home"), ("topics.html", "Topics"), ("notes.html", "Notes"), ("papers.html", "Mock papers"), ("official.html", "Past papers"),
-       ("practice.html", "Practice"), ("planner.html", "Planner")]
+NAV = [("index.html", "Home"), ("topics.html", "Topics"), ("notes.html", "Notes"), ("solutions.html", "Solutions"), ("papers.html", "Mock papers"),
+       ("official.html", "Past papers"), ("practice.html", "Practice"), ("planner.html", "Planner")]
 
 
 def esc(s):
@@ -282,8 +306,25 @@ def question_html(q, number=None, depth=0, show_status=True, link_topic=True):
 <div class="qh"><span class="num">{num}</span><span class="meta">{meta}</span>{st}</div>
 <div class="qt">{mathtex.to_html(q.text)}</div>
 <ol class="opts">{opts}</ol><div class="fb"></div>
-<details class="sol"><summary>Worked solution</summary><div class="sb">{mathtex.to_html(q.solution)}</div><div class="src">Answer <b>{q.answer}</b> &middot; {esc(t['name'])} ({esc(q.spec)}) &middot; question {q.id}</div></details>
+<details class="sol"><summary>Worked solution</summary><div class="sb">{mathtex.to_html(q.solution)}</div>{full_html(q)}<div class="src">Answer <b>{q.answer}</b> &middot; {esc(t['name'])} ({esc(q.spec)}) &middot; question {q.id}</div></details>
 </div>"""
+
+
+def _inline(markup):
+    return mathtex.to_html(markup).replace("<p>", "").replace("</p>", "")
+
+
+def full_html(q, heading=True):
+    """The teaching solution: what the question tests, every step with its reason, the pitfalls and
+    the principle to take away. Returns '' for questions that do not have one yet."""
+    s = getattr(q, "full", None)
+    if not s:
+        return ""
+    steps = "".join(f'<li><div class="do">{_inline(do)}</div><div class="why">{_inline(why)}</div></li>' for do, why in s.steps)
+    pit = ("<div class='pit'><b>Where it goes wrong</b><ul>" + "".join(f"<li>{_inline(p)}</li>" for p in s.pitfalls) + "</ul></div>") if s.pitfalls else ""
+    take = f"<div class='take'><b>Takeaway</b> {_inline(s.takeaway)}</div>" if s.takeaway else ""
+    h = "<div class='fmh'>Full method &mdash; how and why</div>" if heading else ""
+    return f"<div class='fm'>{h}<div class='idea'>{_inline(s.idea)}</div><ol class='steps'>{steps}</ol>{pit}{take}</div>"
 
 
 def qdata_js(questions):
@@ -379,7 +420,7 @@ def index_page(by_topic, counts, generated):
  <div class="card"><h3>Skill drills</h3><p>Fresh numbers every time: indices, logs, quadratics, series, calculus, logic.</p><a class="btn ghost" href="drills.html">Practise</a></div>
 </div>
 <h2 class="sec">Also on this site</h2>
-<div class="links"><a href="notes.html">Revision notes</a><a href="pastq.html">Real questions by topic</a><a href="grades.html">Grade calculator &amp; conversion tables</a><a href="technique.html">Exam technique</a><a href="planner.html">Revision planner</a><a href="search.html">Search every question</a><a href="official/TMUA-Specification.pdf">The specification (PDF)</a></div>
+<div class="links"><a href="notes.html">Revision notes</a><a href="solutions.html">Solution bank (full methods)</a><a href="pastq.html">Real questions by topic</a><a href="grades.html">Grade calculator &amp; conversion tables</a><a href="technique.html">Exam technique</a><a href="planner.html">Revision planner</a><a href="search.html">Search every question</a><a href="official/TMUA-Specification.pdf">The specification (PDF)</a></div>
 """
     return page("Home", body, hero=h, active="index.html")
 
@@ -418,7 +459,7 @@ def topic_page(slug, questions, sets, real):
     qhtml = "".join(question_html(q, number=i, depth=1) for i, q in enumerate(questions, 1))
     real_html = "".join(real_row_html(*x, depth=1) for x in real) or '<p class="empty">No real past questions indexed for this topic.</p>'
     body = f"""
-<div class="links" style="margin:6px 0 14px"><a href="../notes/{slug}.html">&#128214; Revision notes</a><a href="../quickfire.html?topic={slug}">&#9889; Quick-fire this topic</a><a href="../facts.html?topic={slug}">Formula cards</a>{pdfs}</div>
+<div class="links" style="margin:6px 0 14px"><a href="../notes/{slug}.html">&#128214; Revision notes</a><a href="../solutions/{slug}.html">&#129513; Solution bank</a><a href="../quickfire.html?topic={slug}">&#9889; Quick-fire this topic</a><a href="../facts.html?topic={slug}">Formula cards</a>{pdfs}</div>
 <div class="filterbar" id="filterbar"><input type="search" placeholder="Filter by keyword"> {chips}<button class="chip" data-showsol>Show all solutions</button><button class="chip" data-print="qp">Print</button><button class="chip" data-print="sol">Print + solutions</button><span class="cnt"></span></div>
 <p class="note">Click an option to answer. A correct first attempt marks the question <b>secure</b>; a wrong one marks it <b>needs work</b> and opens the worked solution. Keys <kbd>A</kbd>-<kbd>H</kbd> answer the question nearest the top of the screen.</p>
 {qhtml}
@@ -428,6 +469,49 @@ def topic_page(slug, questions, sets, real):
 """
     js = "<script>window.TM.focusQ=function(){const qs=[...document.querySelectorAll('.q:not(.hide):not(.done)')];return qs.find(q=>q.getBoundingClientRect().bottom>80)||null;};</script>"
     return page(t["name"], body, depth=1, active="topics.html", hero=h, extra_js=js, desc=f"TMUA {t['name']} practice questions ({t['spec']}) with worked solutions.")
+
+
+def solution_q_html(q, number, depth=1):
+    """One question in the printable solution bank: question, options with the answer marked,
+    the quick working and the full method."""
+    t = IDX[q.topic]
+    stars = "★" * q.diff + "☆" * (3 - q.diff)
+    opts = "".join(f'<li class="{"right" if L == q.answer else ""}"><span class="lt">{L}</span><span>{_inline(o)}</span></li>' for L, o in zip(q.letters, q.options))
+    return f"""<div class="solq" id="{q.id}">
+<div class="qh"><span class="num">{number}. <span style="font-size:.8rem;font-weight:400;color:var(--stone)">{q.id}</span></span><span class="meta">{esc(t['name'])} &middot; spec {esc(q.spec)} &middot; Paper {q.paper} style &middot; {stars}</span></div>
+<div class="qt">{mathtex.to_html(q.text)}</div>
+<ol class="opts">{opts}</ol>
+<div class="quick"><b>Answer: {q.answer}.</b> {_inline(q.solution)}</div>
+{full_html(q)}
+</div>"""
+
+
+def solutions_page(slug, questions):
+    t = IDX[slug]
+    cls = {"part1": "p1", "part2": "", "section2": "p2"}[t["group_slug"]]
+    n_full = sum(1 for q in questions if getattr(q, "full", None))
+    body = ('<div class="links" style="margin:6px 0 14px"><a href="../topic/' + slug + '.html">&#9998; Practise these questions</a>'
+            f'<a href="../notes/{slug}.html">&#128214; Revision notes</a><a href="../solutions.html">All solution banks</a>'
+            '<button class="chip" data-print="qp">Print</button></div>'
+            '<p class="note">Every question on this topic with its answer, the working, and a full method: what the question is testing, '
+            'the reason for each step, the mistakes that are easy to make and what they would give you, and the principle to take away.</p>'
+            + "".join(solution_q_html(q, i) for i, q in enumerate(questions, 1)))
+    h = hero(esc(t["name"]) + " &mdash; solutions", f"{n_full} full solutions &middot; spec {esc(t['spec'])}",
+             crumbs=[("index.html", "Home"), ("solutions.html", "Solutions"), (None, t["name"])], cls=cls, depth=1, pills=[esc(t["group"]), f"{len(questions)} questions"])
+    return page(f"{t['name']} solutions", body, depth=1, active="solutions.html", hero=h,
+                desc=f"Full worked solutions with method and reasoning for every TMUA {t['name']} question.")
+
+
+def solutions_index_page(by_topic, n_full):
+    body = ""
+    for g in GROUPS:
+        cards = "".join(f'<a class="ncard" href="solutions/{t["slug"]}.html"><b>{esc(t["name"])}</b>'
+                        f'<span>{len(by_topic.get(t["slug"], []))} solutions &middot; {esc(t["spec"])}</span></a>' for t in g["topics"])
+        body += f'<h2 class="sec">{esc(g["name"])}</h2><div class="notes-grid">{cards}</div>'
+    h = hero("Solution bank", "Every question in the bank with a full method: what it is testing and how to recognise the type, every step with the reason for it, "
+             "the wrong turns and the answers they would produce, and the principle to carry into the next question. Printable, one page per topic.",
+             pills=[f"{n_full} full solutions"])
+    return page("Solution bank", body, hero=h, active="solutions.html")
 
 
 def notes_index_page(by_topic):

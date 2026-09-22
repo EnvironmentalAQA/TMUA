@@ -35,6 +35,7 @@ class Q:
     fig: str = None         # figure key in gen/figures.py
     tags: tuple = ()        # e.g. ("roman", "counterexample", "proof-error")
     check: object = None    # optional zero-argument callable returning the expected letter (sympy verification)
+    full: object = None     # Sol: the full teaching solution, attached at build time from bank/sol_*.py
 
     @property
     def n(self):
@@ -43,6 +44,23 @@ class Q:
     @property
     def letters(self):
         return LETTERS[: self.n]
+
+
+@dataclass
+class Sol:
+    """A full teaching solution for one question: not just the working, but what the question is
+    testing, the reason for every step, the wrong turns and the principle to carry forward.
+
+    idea      1-2 sentences: what is really being tested and how to recognise the type.
+    steps     list of (what you do, why you do it) pairs, in order.
+    pitfalls  list of strings: the mistakes that are easy to make here and the answers they lead to.
+    takeaway  one sentence: the general principle worth remembering.
+    Same markup as questions ($...$ for maths).
+    """
+    idea: str
+    steps: list
+    pitfalls: list = field(default_factory=list)
+    takeaway: str = ""
 
 
 @dataclass

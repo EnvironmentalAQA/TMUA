@@ -11,6 +11,8 @@ from collections import Counter
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import bank
 from bank.topics import ALL_SLUGS, GROUPS, topic_index
+
+SEC2_SLUGS = {t["slug"] for g in GROUPS if g["slug"] == "section2" for t in g["topics"]}
 from bank.official_keys import KEYS, GRADES, SERIES
 from bank.official_index import OFFICIAL_INDEX
 from gen import site, pages, papers as paper_gen, mathtex
@@ -23,13 +25,18 @@ KEEP_LAST = re.compile(r"^(none|no |no\b|all real|all values|infinitely|it canno
 
 
 def load_bank():
-    questions, notes, facts = [], {}, []
+    questions, notes, facts, sols = [], {}, [], {}
     for m in pkgutil.iter_modules(bank.__path__):
         mod = importlib.import_module(f"bank.{m.name}")
         questions += getattr(mod, "QUESTIONS", [])
         notes.update(getattr(mod, "NOTES", {}))
         facts += getattr(mod, "FACTS", [])
-    return questions, notes, facts
+        sols.update(getattr(mod, "SOLUTIONS", {}))
+    # Section 2 is Paper 2 only, so its questions are Paper 2 style whatever the bank file says.
+    for q in questions:
+        if q.topic in SEC2_SLUGS:
+            q.paper = 2
+    return questions, notes, facts, sols
 
 
 def validate(questions):
@@ -106,12 +113,22 @@ def main():
     ap.add_argument("--no-pdf", action="store_true")
     args = ap.parse_args()
 
-    questions, notes, facts = load_bank()
+    questions, notes, facts, sols = load_bank()
     validate(questions)
+    ids = {q.id for q in questions}
+    stray = sorted(set(sols) - ids)
+    if stray:
+        print("VALIDATION ERRORS:\n  - full solutions for unknown question ids: " + ", ".join(stray))
+        sys.exit(1)
+    for q in questions:
+        q.full = sols.get(q.id)
+    nofull = [q.id for q in questions if q.full is None]
     for q in questions:
         shuffle_options(q)
     idx = topic_index()
-    print(f"Bank: {len(questions)} questions, {len(notes)} notes, {len(facts)} facts")
+    print(f"Bank: {len(questions)} questions ({len(questions) - len(nofull)} with full solutions), {len(notes)} notes, {len(facts)} facts")
+    if nofull:
+        print(f"  ! no full solution for {len(nofull)}: " + ", ".join(nofull[:12]) + ("..." if len(nofull) > 12 else ""))
     print("Answer letters:", dict(sorted(Counter(q.answer for q in questions).items())))
     site.NOTES_ALL.update(notes)
     site.FACTS[:] = facts
@@ -119,7 +136,7 @@ def main():
     if missing:
         print("  ! no notes for:", ", ".join(missing))
 
-    for d in ("pdf/topic", "pdf/papers", "topic", "notes", "paper", "official", "real"):
+    for d in ("pdf/topic", "pdf/papers", "topic", "notes", "solutions", "paper", "official", "real"):
         os.makedirs(os.path.join(SITE, d), exist_ok=True)
 
     by_topic = {}
@@ -148,6 +165,8 @@ def main():
         if slug in notes:
             with open(os.path.join(SITE, "notes", f"{slug}.html"), "w", encoding="utf-8") as f:
                 f.write(site.notes_page(slug, notes[slug], qs, real.get(slug, [])))
+        with open(os.path.join(SITE, "solutions", f"{slug}.html"), "w", encoding="utf-8") as f:
+            f.write(site.solutions_page(slug, qs))
         print(f"  {slug}: {len(qs)} questions, {real_counts.get(slug, 0)} real")
 
     # ---- mock papers ----
@@ -187,6 +206,7 @@ def main():
         "index.html": site.index_page(by_topic, counts, generated),
         "topics.html": site.topics_page(by_topic, counts),
         "notes.html": site.notes_index_page(by_topic),
+        "solutions.html": site.solutions_index_page(by_topic, len(questions) - len(nofull)),
         "papers.html": site.papers_page(generated),
         "official.html": site.official_page(files),
         "pastq.html": site.pastq_page(),

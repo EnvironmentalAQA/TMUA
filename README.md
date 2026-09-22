@@ -3,7 +3,8 @@
 A self-contained revision site for the **Test of Mathematics for University Admission (TMUA)**:
 an original multiple-choice question bank written to the UAT-UK Content Specification, generated
 mock papers in the real format (HTML and PDF), every official past paper with online marking against
-the real answer keys and grade conversions, revision notes for all 26 topics, and practice modes.
+the real answer keys and grade conversions, revision notes for all 26 topics, a full teaching solution
+for every one of the 489 questions, and practice modes.
 
 **Open the site:** `site/index.html` (double-click) or serve `site/` with any static server.
 Maths is rendered by KaTeX from a CDN, so an internet connection is needed for the formulas.
@@ -17,11 +18,13 @@ bank/topics.py          the topic tree (26 slugs in three groups) taken from the
 bank/p1_*.py            Section 1 Part 1 questions (AS pure): indices, quadratics, ... graphs
 bank/p2_*.py            Section 1 Part 2 questions (Higher GCSE): number, ratio, algebra, geometry, ...
 bank/s2_*.py            Section 2 questions (Paper 2 only): logic, proof, reasoning, errors in proofs
+bank/x_paper2_mixed.py  Paper 2-style questions on the Section 1 topics
+bank/sol_*.py           full teaching solutions, keyed by question id (one file per topic)
 bank/notes_*.py         revision notes per topic
 bank/facts.py           formula / fact flashcards
 bank/official_keys.py   answer keys and score conversions for every published paper
 bank/official_index.py  topic of every question in every published paper
-gen/model.py            Q and Fact data classes + markup rules
+gen/model.py            Q, Sol and Fact data classes + markup rules
 gen/mathtex.py          markup -> HTML (KaTeX) and -> PDF (matplotlib mathtext images)
 gen/papers.py           assembles 20-question mock papers
 gen/pdf.py              TMUA-format PDFs (reportlab)
@@ -72,6 +75,27 @@ Options are shuffled deterministically at build time so correct answers are spre
 `build.py` refuses to build if an id is duplicated, an answer letter is out of range, options repeat,
 or a maths snippet does not parse.
 
+## Adding a full solution
+
+The `solution=` argument above is the short working shown when a question is marked. The **solution
+bank** is separate: a `Sol` per question id in the matching `bank/sol_*.py`, holding the teaching
+version - what the question tests, the reason for every step, the wrong turns and the principle.
+
+```python
+"IND-23": Sol(
+    idea=r"...what is really being tested and how to recognise the type...",
+    steps=[
+        (r"what you do", r"why you do it"),      # one pair per step, in order
+        ...
+    ],
+    pitfalls=[r"...the mistake, and the value it leads to..."],
+    takeaway=r"one sentence worth remembering"),
+```
+
+Refer to **values** in `pitfalls`, never to option letters: options are shuffled at build time, so
+"an offered option" is safe but "option C" is not. `build.py` prints how many questions have a full
+solution and names any that do not; `tools_check.py` checks every `Sol` parses and has non-empty steps.
+
 ## Site features (all state lives in the browser's localStorage)
 
 - **Questions by topic** (`topic/<slug>.html`): instant marking with worked solutions; a correct first
@@ -84,6 +108,10 @@ or a maths snippet does not parse.
 - **Official papers** (`official.html`, `real/<series>-P<n>.html`): the PDF alongside an answer grid and
   timer; marked against the real key with the official grade conversion and a topic breakdown linking to
   notes and practice.
+- **Solution bank** (`solutions.html`, `solutions/<slug>.html`): every question with its answer, the
+  quick working and the full method - the idea behind the question, each step paired with the reason
+  for it, the pitfalls and what they would give you, and the takeaway. Printable, and included in the
+  topic solution PDFs.
 - **Real questions by topic** (`pastq.html`): all 360 published questions indexed by topic.
 - **Revision notes** (`notes/<slug>.html`): summary, sections by spec reference, must-know formulas,
   classic traps, a worked example and the real questions on the topic.

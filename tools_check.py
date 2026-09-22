@@ -35,6 +35,19 @@ for p in sorted(glob.glob(os.path.join(ROOT, "bank", "*.py"))):
         traceback.print_exc()
         errs += 1
         continue
+    for sid, sol in getattr(mod, "SOLUTIONS", {}).items():
+        bad = []
+        fields = [sol.idea, sol.takeaway] + [x for pair in sol.steps for x in pair] + list(sol.pitfalls)
+        for f in fields:
+            try:
+                mathtex.check_math(f)
+            except Exception as e:
+                bad.append(f"maths error in {f[:45]!r}: {str(e).splitlines()[-1][:70]}")
+        if not sol.steps:
+            bad.append("no steps")
+        if bad:
+            errs += 1
+            print(f"{sid} (solution): " + "; ".join(bad))
     qs = getattr(mod, "QUESTIONS", [])
     total += len(qs)
     for q in qs:

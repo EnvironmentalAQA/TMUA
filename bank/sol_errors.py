@@ -1,0 +1,307 @@
+"""Full teaching solutions: identifying errors in proofs (ERR-xx)."""
+from gen.model import Sol
+
+SOLUTIONS = {
+
+"ERR-01": Sol(
+    idea=r"Squaring an equation is not reversible: it can create solutions that do not satisfy the original. The error is the **missing check**, not the algebra.",
+    steps=[
+        (r"Check line I: squaring both sides of $\sqrt{x+3} = x-3$ gives $x + 3 = x^2 - 6x + 9$. Valid.",
+         r"$A = B \Rightarrow A^2 = B^2$ is always a legitimate deduction - it is the converse that fails."),
+        (r"Check lines II and III: $x^2 - 7x + 6 = 0$ factorises as $(x-1)(x-6) = 0$. Valid.",
+         r"$-1 \times -6 = 6$ and $-1 - 6 = -7$ ✓."),
+        (r"Line IV asserts both are solutions. Substitute $x = 1$ into the **original**: $\sqrt4 = 2$, but $x - 3 = -2$. $2 \neq -2$, so $x=1$ is extraneous.",
+         r"A square root is non-negative, so the right-hand side must be $\geq 0$, forcing $x \geq 3$."),
+        (r"Substitute $x = 6$: $\sqrt9 = 3$ and $6-3 = 3$ ✓. So only $x = 6$ is a solution, and the first error is line IV.",
+         r"Lines I-III produce **candidates**; the check is a required final step."),
+    ],
+    pitfalls=[r"Blaming line I - squaring is a valid implication, just not an equivalence.",
+              r"Declaring the solution correct because the factorising is right; correct algebra can still give a wrong answer set.",
+              r"Checking the candidates in the squared equation rather than the original - both pass there, which proves nothing."],
+    takeaway=r"After squaring, always substitute back into the **original** equation; squaring can only add solutions, never lose them."),
+
+"ERR-02": Sol(
+    idea=r"The classic '$1=2$' fallacy. Somewhere a step is division by an expression that is secretly zero.",
+    steps=[
+        (r"Line I sets $a = b$ with $a \neq 0$ - a legitimate supposition.",
+         r"Nothing wrong yet."),
+        (r"Line II: multiplying $a = b$ by $a$ gives $a^2 = ab$. Valid.",
+         r"Multiplying both sides by the same quantity is always allowed."),
+        (r"Line III: subtracting $b^2$ from both sides and factorising both sides. Valid.",
+         r"$a^2 - b^2 = (a-b)(a+b)$ and $ab - b^2 = b(a-b)$ - correct algebra."),
+        (r"Line IV divides by $(a-b)$. But $a = b$, so $a - b = 0$: this is division by zero. **First error.**",
+         r"Dividing by zero is undefined, and it is exactly what manufactures the false conclusion."),
+    ],
+    pitfalls=[r"Blaming line V, where the absurdity finally appears; the last line is where you **notice** the error, not where it happens.",
+              r"Blaming line III - the factorisation is perfectly correct.",
+              r"Being reassured by the stated condition $a \neq 0$; it is $a - b$, not $a$, that vanishes."],
+    takeaway=r"In every fake proof of this type, look for a division by a factor that the hypotheses force to be zero."),
+
+"ERR-03": Sol(
+    idea=r"$\sin$ is not one-to-one, so $\sin\theta = \sin\alpha$ has more solutions than $\theta = \alpha$.",
+    steps=[
+        (r"Line I claims $\sin\theta = \sin 40^\circ \Rightarrow \theta = 40^\circ$. This is the error.",
+         r"Sine takes the same value twice per revolution: $\sin(180^\circ - \alpha) = \sin\alpha$."),
+        (r"So $\theta = 140^\circ$ also satisfies the equation.",
+         r"$\sin 140^\circ = \sin 40^\circ$ - check on the graph or with the symmetry of the unit circle."),
+        (r"Lines II and III are then correct **statements** in themselves (sine does have period $360^\circ$), but they are built on the incomplete line I.",
+         r"The question asks for the **first** error, which is line I."),
+        (r"The full solution set in $0^\circ \leq \theta < 360^\circ$ is $\theta = 40^\circ$ and $\theta = 140^\circ$.",
+         r"Only two, because the sine is positive in the first and second quadrants."),
+    ],
+    pitfalls=[r"Claiming the period of sine is $180^\circ$ - that is tangent.",
+              r"Claiming $\theta = 400^\circ$ was missed - it is outside the stated interval.",
+              r"Declaring the work correct because each individual line looks plausible."],
+    takeaway=r"$\sin\theta = \sin\alpha$ gives $\theta = \alpha + 360^\circ k$ **or** $\theta = 180^\circ - \alpha + 360^\circ k$. Never cancel a sine."),
+
+"ERR-04": Sol(
+    idea=r"Taking square roots of an inequality gives a modulus, not a bare inequality. Here the claim itself is false.",
+    steps=[
+        (r"Test the claim: $x = -4$ gives $x^2 = 16 > 9$, but $x = -4 \not> 3$. The **claim is false**.",
+         r"Settle the truth of the claim first; that tells you an error must exist somewhere."),
+        (r"Line I is just the supposition - no error.",
+         r"You are allowed to suppose the hypothesis."),
+        (r"Line II says 'taking square roots, $x > 3$'. What $x^2 > 9$ actually gives is $|x| > 3$, i.e. $x>3$ **or** $x<-3$. **First error.**",
+         r"$\sqrt{x^2} = |x|$, not $x$."),
+        (r"The offered repair ('say $|x|>3$ and then deduce $x>3$') is no repair at all, since $|x|>3$ does **not** give $x>3$.",
+         r"That option admits the modulus but then makes the same invalid step."),
+    ],
+    pitfalls=[r"Accepting the option that says the claim is true - it is not.",
+              r"Blaming line III; by then the damage is done.",
+              r"Solving $x^2 > 9$ as $-3 < x < 3$, which is the solution of $x^2 < 9$."],
+    takeaway=r"$x^2 > k^2 \iff |x| > k \iff x>k$ or $x<-k$. Squaring and rooting both lose sign information."),
+
+"ERR-05": Sol(
+    idea=r"Multiplying an inequality by an expression whose sign is unknown. The error is the unstated assumption.",
+    steps=[
+        (r"Line I multiplies by $(x-2)$ and keeps the direction of the inequality.",
+         r"That is only valid if $x - 2 > 0$; if $x < 2$ the inequality must reverse."),
+        (r"So line I is the **first error**: it silently assumes $x > 2$.",
+         r"The line is not wrong for all $x$, but it is wrong as an unconditional step - which is what makes it an error."),
+        (r"Consequence: the student misses a whole branch. Test $x = 0$: $\frac{0+1}{0-2} = -\frac12 < 3$ ✓ - a genuine solution not in $x > \frac72$.",
+         r"A single test value exposes the omission."),
+        (r"The correct solution set is $x < 2$ or $x > \frac72$.",
+         r"For $2 < x < \frac72$ the fraction exceeds $3$; at $x = 2$ it is undefined."),
+    ],
+    pitfalls=[r"Saying you can never multiply an inequality by an expression - you can, if you case-split on its sign, or multiply by $(x-2)^2$, which is always positive.",
+              r"Blaming line II or III; the arithmetic there is right, given line I.",
+              r"Forgetting that $x = 2$ must be excluded from any solution set."],
+    takeaway=r"Never multiply an inequality by an expression of unknown sign: split into cases, or multiply by its square."),
+
+"ERR-06": Sol(
+    idea=r"A subtle one: the **claim is true** but one line asserts more than was proved. Distinguish a false conclusion from an unjustified step.",
+    steps=[
+        (r"Check line I: $f'(x) = 3x^2 - 6x + 3 = 3(x^2-2x+1) = 3(x-1)^2$. Correct.",
+         r"Differentiate term by term, then factorise."),
+        (r"Check line II: a square is non-negative, so $f'(x) \geq 0$, with equality only at $x = 1$. Correct.",
+         r"The word 'only' is right - $(x-1)^2 = 0$ just at $x=1$."),
+        (r"Line III says '$f'(x) > 0$ for all $x$' - **false at $x = 1$**, where $f'(1) = 0$. So line III overstates line II.",
+         r"It asserts a strict inequality that was never established."),
+        (r"Is the claim itself true? Yes: $f' \geq 0$ everywhere with equality at a single isolated point still gives $f(a) < f(b)$ for $a<b$.",
+         r"A derivative vanishing at one point does not create a flat stretch; there is no turning point, because $f'$ does not change sign."),
+    ],
+    pitfalls=[r"Concluding the claim is false because $f'(1) = 0$ - a stationary point of inflexion is not a turning point.",
+              r"Blaming line I or II, both of which are correct.",
+              r"Calling the proof completely correct, ignoring the strictness error in line III."],
+    takeaway=r"$f' \geq 0$ with equality only at isolated points still means strictly increasing - but a proof must not claim strict positivity it has not shown."),
+
+"ERR-07": Sol(
+    idea=r"Sometimes the argument is simply valid. Check each step against the rules rather than assuming a trap.",
+    steps=[
+        (r"Line I: $0.1 > 0.01$ ✓.",
+         r"$\frac{1}{10} > \frac{1}{100}$."),
+        (r"Line II: $\log_{10}$ is an **increasing** function, so it preserves the inequality: $\log_{10}0.1 = -1$ and $\log_{10}0.01 = -2$, and indeed $-1 > -2$ ✓.",
+         r"Applying an increasing function to both sides keeps the direction; $\log_{10} 10^{-1} = -1$."),
+        (r"Line III: $\log_{10}\frac12 < 0$ because $\frac12 < 1$. Multiplying an inequality by a negative number reverses it, which is exactly what is written ✓.",
+         r"$-1 > -2$ becomes $-1 \times c < -2 \times c$ for $c<0$."),
+        (r"So all three lines are correct.",
+         r"The question is testing whether you can certify a valid argument, not only spot faults."),
+    ],
+    pitfalls=[r"Assuming logarithms reverse inequalities - they do not; $\log$ is increasing on its domain.",
+              r"Thinking $\log_{10}\frac12$ is positive; logs of numbers below $1$ are negative.",
+              r"Misreading $\log_{10}0.1$ as $1$ rather than $-1$.",
+              r"Hunting for an error simply because the question implies one might exist."],
+    takeaway=r"Increasing functions preserve inequalities; multiplying by a negative reverses them. $\log_b x < 0$ exactly when $0<x<1$ (for $b>1$)."),
+
+"ERR-08": Sol(
+    idea=r"A circular argument: the last line assumes the very thing being proved. Also, the claim is false.",
+    steps=[
+        (r"Test the claim: $n = 2$ gives $n^2 = 4$, divisible by $4$, but $2$ is not. **Claim false.**",
+         r"Establish this first; an error must exist."),
+        (r"Lines I-III: from $n^2 = 4k$, $n^2$ is even so $n$ is even. The algebra $n = 2\sqrt k$ with $\sqrt k$ an integer is correct given $n$ is an integer. Valid.",
+         r"These lines legitimately establish that $n$ is even."),
+        (r"Line IV: it writes $n = 2m$, computes $n^2 = 4m^2$ (true but irrelevant), and then concludes '$n$ is divisible by $4$'. That conclusion does not follow from anything. **First error.**",
+         r"Showing $n^2$ is divisible by $4$ was the **hypothesis**; restating it is not progress. Divisibility of $n$ by $4$ would require $m$ even, which is never shown."),
+        (r"Compare with the working proof for $8 \mid n^2 \Rightarrow 4 \mid n$: there the extra factor forces $m$ even. Here there is no spare factor.",
+         r"Seeing where the analogous proof gets its leverage shows exactly what is missing."),
+    ],
+    pitfalls=[r"Accepting line IV because every individual equation in it is true - the **inference** is what fails.",
+              r"Blaming line III; introducing $\sqrt k$ is unusual but not invalid here.",
+              r"Accepting the claim because $4 \mid n \Rightarrow 4 \mid n^2$ (the converse) is true."],
+    takeaway=r"A step that restates the hypothesis and then asserts the conclusion is circular. $4\mid n^2$ gives only $2 \mid n$."),
+
+"ERR-09": Sol(
+    idea=r"Another valid proof. Completing the square and bounding below is a standard, correct technique.",
+    steps=[
+        (r"Line I: $(x+1)^2 = x^2+2x+1$, so $x^2+2x+3 = (x+1)^2 + 2$ ✓.",
+         r"Half the coefficient of $x$ is $1$; correct by $3 - 1 = 2$."),
+        (r"Line II: any real square is $\geq 0$ ✓.",
+         r"True for every real $x$."),
+        (r"Line III: adding $2$ gives $\geq 2$, and $2 > 0$ ✓.",
+         r"Adding a constant to both sides of an inequality is always valid."),
+        (r"Line IV: an expression that is always at least $2$ can never equal $0$, so there are no real roots ✓.",
+         r"That is the definition of having no real solutions. (Check: discriminant $4 - 12 = -8 < 0$ ✓.)"),
+    ],
+    pitfalls=[r"Claiming $(x+1)^2$ can be negative - not for real $x$.",
+              r"Claiming 'a positive expression can still equal zero' - it cannot; that is what positive means.",
+              r"Assuming there must be an error."],
+    takeaway=r"Completing the square gives a rigorous lower bound; if the minimum is positive, there are no real roots."),
+
+"ERR-10": Sol(
+    idea=r"The same unknown-sign trap as ERR-05, now with division, plus a false claim.",
+    steps=[
+        (r"Test the claim: $a = 1$, $b = -1$. Then $a > b$ but $\frac1a = 1$ and $\frac1b = -1$, so $\frac1a > \frac1b$. **Claim false.**",
+         r"Opposite signs are the natural test for a reciprocal claim."),
+        (r"Line I is just the supposition - fine.",
+         r"No deduction yet."),
+        (r"Line II divides by $ab$ and keeps the direction. That needs $ab > 0$, which is not given; $ab$ could be negative (as in the counterexample) or zero. **First error.**",
+         r"Dividing by a negative reverses the inequality, and dividing by zero is undefined."),
+        (r"The claim is true if $a$ and $b$ have the same sign - which is the condition that was silently assumed.",
+         r"Naming the missing hypothesis is the cleanest way to describe this kind of error."),
+    ],
+    pitfalls=[r"Accepting the argument because it 'works for positive numbers' - the claim is stated for all reals.",
+              r"Blaming line III, which is a trivial restatement of line II."],
+    takeaway=r"Reciprocals reverse order only within a fixed sign: for $a,b>0$ (or both negative), $a>b \Rightarrow \frac1a<\frac1b$."),
+
+"ERR-11": Sol(
+    idea=r"The fundamental theorem of calculus needs the integrand to be defined (and continuous) throughout the interval.",
+    steps=[
+        (r"Spot the warning sign: $\frac{1}{x^2} > 0$ wherever it is defined, yet the 'answer' is negative.",
+         r"An integral of a positive function over an interval cannot be negative - the sign alone signals an error."),
+        (r"Line I is fine: $\frac{d}{dx}\left(-x^{-1}\right) = x^{-2}$ ✓.",
+         r"Differentiate: $-(-1)x^{-2} = x^{-2}$."),
+        (r"Line II applies the fundamental theorem across $[-1,1]$. But $\frac{1}{x^2}$ is undefined at $x = 0$, which lies **inside** the interval. **First error.**",
+         r"The antiderivative is not continuous on the whole interval, so the theorem does not apply."),
+        (r"The arithmetic in line II is itself right ($-\frac11 - \left(-\frac{1}{-1}\right) = -1 - 1 = -2$); the fault is applying the theorem at all.",
+         r"Correct arithmetic on an invalid application still gives nonsense."),
+    ],
+    pitfalls=[r"Trying to 'fix' the sign to $+2$ - the integral does not exist in the ordinary sense, so no finite value is right.",
+              r"Blaming line I; the antiderivative is correct.",
+              r"Ignoring the discontinuity because the limits themselves are perfectly ordinary numbers."],
+    takeaway=r"Before applying $\int_a^b f = F(b)-F(a)$, check $f$ is defined on all of $[a,b]$; and a positive integrand can never give a negative integral."),
+
+"ERR-12": Sol(
+    idea=r"Dividing an equation by a variable destroys the root where that variable is zero.",
+    steps=[
+        (r"Line I divides $x^2 = 4x$ by $x$. That is only legitimate when $x \neq 0$ - and $x = 0$ does satisfy the equation. **First error.**",
+         r"$0^2 = 4 \times 0$ ✓, so $x=0$ is a genuine solution that the division removes."),
+        (r"The correct method: bring everything to one side and factorise. $x^2 - 4x = 0$, so $x(x-4) = 0$.",
+         r"Factorising preserves every root, because a product is zero exactly when a factor is."),
+        (r"So $x = 0$ or $x = 4$ - two solutions.",
+         r"Line II's 'only solution' is wrong as a consequence of line I."),
+    ],
+    pitfalls=[r"Blaming line II - it faithfully reports what line I produced; the first error is the division.",
+              r"Thinking $x^2 \div x = 2x$; it is $x$.",
+              r"Trying to 'fix' it by remembering to add $x = 0$ afterwards - correct in this case, but factorising is the reliable habit."],
+    takeaway=r"Never divide an equation by a variable expression. Factorise instead: division loses roots, squaring adds them."),
+
+"ERR-13": Sol(
+    idea=r"Assuming the conclusion. The chain of steps is valid but it runs the wrong way.",
+    steps=[
+        (r"Line I supposes $x + \frac1x \geq 2$ - which is exactly the claim to be proved. **First error.**",
+         r"A proof may suppose the **hypothesis** ($x>0$), never the conclusion."),
+        (r"Lines II and III are then correct algebra, ending at $(x-1)^2 \geq 0$, a truth.",
+         r"Deriving a true statement from an assumption proves nothing: false statements can also imply true ones."),
+        (r"The repair: run it backwards. Start from $(x-1)^2 \geq 0$ (known true), expand to $x^2 - 2x + 1 \geq 0$, so $x^2 + 1 \geq 2x$, and divide by $x > 0$ to get $x + \frac1x \geq 2$.",
+         r"Every step is reversible here - the division by $x$ is safe because $x>0$ - so the reversal is valid."),
+        (r"So the best description is: it assumes what it is proving, and would be valid reversed.",
+         r"Both halves matter: the flaw, and the fact that it is repairable."),
+    ],
+    pitfalls=[r"Calling the argument correct because each line follows from the previous one - direction is what matters.",
+              r"Calling the claim false; it is true, as the reversed proof shows.",
+              r"Thinking multiplying by $x$ reverses the inequality - $x>0$ is given."],
+    takeaway=r"Working backwards is how you **find** a proof; to **present** one, start from a known truth and check every step reverses."),
+
+"ERR-14": Sol(
+    idea=r"A counterexample must satisfy the hypothesis and break the conclusion. Test both halves on each candidate.",
+    steps=[
+        (r"Hypothesis: $x^2 = y^2$. Conclusion to break: need $x \neq y$.",
+         r"Both conditions, or it is not a counterexample."),
+        (r"$x=2, y=-2$: $4 = 4$ ✓ hypothesis, and $2 \neq -2$ ✓ conclusion fails. **Counterexample.**",
+         r"Equal squares with opposite signs is exactly the gap in the claim."),
+        (r"$x=2,y=2$ and $x=0,y=0$ and $x=-1,y=-1$: hypothesis holds but so does the conclusion - these are examples **of** the claim.",
+         r"Confirming instances never refute."),
+        (r"$x=1,y=2$: $1 \neq 4$, so the hypothesis fails and the case is irrelevant.",
+         r"A case outside the hypothesis says nothing."),
+    ],
+    pitfalls=[r"Picking a pair where the hypothesis fails and thinking the different values refute the claim.",
+              r"Picking a pair where both hold, which supports rather than refutes."],
+    takeaway=r"$x^2=y^2 \Rightarrow x = \pm y$. A counterexample satisfies the 'if' and fails the 'then'."),
+
+"ERR-15": Sol(
+    idea=r"A correct proof by induction. Check the base case, the inductive hypothesis, the step and the conclusion in turn.",
+    steps=[
+        (r"Line I: base case $n=1$ gives $1 = 1^2$ ✓.",
+         r"An induction needs a case to start from."),
+        (r"Line II: assuming the result for some $n$ is the **inductive hypothesis** - not circular, because it is a supposition inside the step, not a global assumption.",
+         r"This is the point most often misidentified as an error."),
+        (r"Line III: the next odd number after $2n-1$ is $2n+1$ ✓, and $n^2 + 2n + 1 = (n+1)^2$ ✓.",
+         r"Check the term: odd numbers go up in twos, so $(2n-1)+2 = 2n+1$."),
+        (r"Line IV: base case plus step gives the result for every positive integer ✓. The proof is correct.",
+         r"$n=1$ gives $n=2$, which gives $n=3$, and so on without end."),
+    ],
+    pitfalls=[r"Calling line II circular - assuming for **one** $n$ in order to deduce $n+1$ is exactly how induction works.",
+              r"Claiming the next odd number is $2n-1$; that is the $n$th one, already included.",
+              r"Claiming line IV proves only the $n+1$ case - the chain from the base case gives all $n$."],
+    takeaway=r"Induction $=$ base case $+$ (truth at $n$ $\Rightarrow$ truth at $n+1$). The inductive hypothesis is not circular reasoning."),
+
+"ERR-16": Sol(
+    idea=r"An argument that proves 'almost' the right thing. Find the single case it mishandles.",
+    steps=[
+        (r"The reasoning is: even $\Rightarrow$ divisible by $2$ $\Rightarrow$ not prime.",
+         r"Trace the chain and test each link."),
+        (r"The second link fails for one number: $2$ is divisible by $2$ and **is** prime, because divisibility by itself is allowed.",
+         r"A prime has exactly two divisors, $1$ and itself; for $2$ those are $1$ and $2$."),
+        (r"So the conclusion 'every prime is odd' is false - $2$ is an even prime.",
+         r"A single counterexample refutes it."),
+        (r"The correct statement is 'every prime **greater than $2$** is odd', and the argument does establish that.",
+         r"Identifying the corrected claim shows precisely what the flaw was."),
+    ],
+    pitfalls=[r"Objecting that some odd numbers are not prime - true, but irrelevant; the claim is not the converse.",
+              r"Objecting via $1$ or $0$ - neither is a counterexample to 'every prime is odd'."],
+    takeaway=r"Check whether an argument's chain breaks at a boundary case. $2$ is the even prime that breaks this one."),
+
+"ERR-17": Sol(
+    idea=r"To disprove a claim about a test for inflexion, produce a function satisfying the conditions but failing the conclusion.",
+    steps=[
+        (r"Need $f'(a) = f''(a) = 0$ with **no** inflexion at $a$.",
+         r"Both hypotheses must hold, and the conclusion must fail."),
+        (r"Take $f(x) = x^4$ at $a=0$: $f'(x) = 4x^3$ so $f'(0)=0$ ✓; $f''(x) = 12x^2$ so $f''(0)=0$ ✓.",
+         r"Both derivatives vanish - the hypotheses are satisfied."),
+        (r"But $x^4$ has a **minimum** at $0$ (it is positive on both sides), not a point of inflexion.",
+         r"An inflexion requires the concavity to change sign; $f'' = 12x^2 \geq 0$ on both sides, so it does not."),
+        (r"Check the others: $x^3$ does have an inflexion at $0$ (so it confirms, not refutes); $x^2$ has $f''(0) = 2 \neq 0$; $x^3-3x$ at $a=1$ has $f'(1) = 0$ but $f''(1) = 6 \neq 0$; $f(x)=x$ has $f'(0) = 1 \neq 0$.",
+         r"Each fails one of the two hypotheses, or satisfies the conclusion."),
+    ],
+    pitfalls=[r"Choosing $x^3$, the standard **example** of the claim rather than a counterexample.",
+              r"Choosing a function where one of the two derivative conditions fails at the stated point."],
+    takeaway=r"$f''(a)=0$ does not guarantee an inflexion; the second derivative must **change sign**. $x^4$ at $0$ is the standard counterexample."),
+
+"ERR-18": Sol(
+    idea=r"Dividing a trigonometric equation by $\cos x$ loses the solutions where $\cos x = 0$.",
+    steps=[
+        (r"Line I divides by $\cos x$, valid only if $\cos x \neq 0$. **First error.**",
+         r"The equation $2\cos^2x = \cos x$ is satisfied whenever $\cos x = 0$, so those solutions are discarded."),
+        (r"The correct method: $2\cos^2x - \cos x = 0$, so $\cos x(2\cos x - 1) = 0$.",
+         r"Factorise rather than divide - it keeps both branches."),
+        (r"Branch $\cos x = 0$: in $0 \leq x < 2\pi$ that is $x = \frac{\pi}{2}$ and $x = \frac{3\pi}{2}$ - **two** missed solutions.",
+         r"Cosine vanishes at the top and bottom of the unit circle."),
+        (r"Branch $\cos x = \frac12$: $x = \frac{\pi}{3}$ and $x = \frac{5\pi}{3}$ - the two the student found.",
+         r"Cosine is positive in the first and fourth quadrants, so $x = \frac\pi3$ and $2\pi - \frac\pi3$. Four solutions in total."),
+    ],
+    pitfalls=[r"Saying one solution was missed; $\cos x = 0$ has two solutions in a full revolution.",
+              r"Blaming line III - the student's own two values are correct for their (incomplete) equation.",
+              r"Declaring the working correct because the two values found do satisfy the original equation."],
+    takeaway=r"Never divide a trigonometric equation by a trig function - factorise, and count the solutions of **each** branch across the whole interval."),
+
+}

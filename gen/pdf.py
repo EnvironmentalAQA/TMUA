@@ -124,6 +124,37 @@ def build_question_paper(path, pno, set_label, questions):
     doc.build(fl, onFirstPage=footer, onLaterPages=footer)
 
 
+IDEA = ParagraphStyle("idea", parent=BODY, fontSize=10, leading=13.5, leftIndent=10, spaceBefore=4, spaceAfter=3, borderPadding=2)
+STEP = ParagraphStyle("step", parent=BODY, fontSize=10, leading=13.5, leftIndent=26, firstLineIndent=-16, spaceAfter=0)
+WHY = ParagraphStyle("why", parent=BODY, fontSize=9, leading=12, leftIndent=26, textColor=colors.HexColor("#555555"), spaceAfter=3)
+PIT = ParagraphStyle("pit", parent=BODY, fontSize=9.2, leading=12.5, leftIndent=20, bulletIndent=10, textColor=colors.HexColor("#8c3a30"), spaceAfter=1)
+TAKE = ParagraphStyle("take", parent=BODY, fontSize=9.5, leading=13, leftIndent=10, textColor=colors.HexColor("#6b4c00"), spaceBefore=3)
+FMH = ParagraphStyle("fmh", fontName=BOLD, fontSize=10, leading=13, spaceBefore=6, spaceAfter=2, textColor=colors.HexColor("#075e5a"))
+
+
+def _one_line(markup, size=10):
+    """Render a markup string as a single paragraph's worth of inline markup."""
+    return " ".join(b for kind, b in mathtex.to_pdf_blocks(markup, size=size) if kind in ("p", "disp"))
+
+
+def _full_blocks(q):
+    """The teaching solution for the solutions booklet."""
+    s = getattr(q, "full", None)
+    if not s:
+        return []
+    out = [Paragraph("Full method - how and why", FMH), Paragraph(_one_line(s.idea), IDEA)]
+    for i, (do, why) in enumerate(s.steps, 1):
+        out.append(Paragraph(f"<b>{i}</b>&nbsp;&nbsp;&nbsp;{_one_line(do)}", STEP))
+        out.append(Paragraph(f"<i>why:</i> {_one_line(why, 9)}", WHY))
+    if s.pitfalls:
+        out.append(Paragraph("<b>Where it goes wrong</b>", PIT))
+        for p in s.pitfalls:
+            out.append(Paragraph(_one_line(p, 9), PIT, bulletText="•"))
+    if s.takeaway:
+        out.append(Paragraph(f"<b>Takeaway</b> {_one_line(s.takeaway, 9)}", TAKE))
+    return out
+
+
 def _answer_table(questions):
     rows = [["Question", "Answer", "Topic"]]
     for i, q in enumerate(questions, 1):
@@ -147,6 +178,7 @@ def build_solutions(path, title, subtitle, questions, numbered=True):
         block += _blocks(q.text, size=10.5)
         block.append(Paragraph(f"<b>Answer: {q.answer}</b>", BODY))
         block += _blocks(q.solution, style=SOL, size=10)
+        block += _full_blocks(q)
         block.append(Spacer(1, 4))
         fl.append(KeepTogether(block))
     doc.build(fl, onFirstPage=footer, onLaterPages=footer)
