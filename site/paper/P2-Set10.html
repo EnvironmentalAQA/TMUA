@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Paper 2 Set 10 - TMUA Practice</title><meta name="description" content="TMUA practice: questions by topic, mock papers, past papers and revision notes written to the TMUA specification.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script><style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap');
+:root{--navy:#14213d;--ink:#1b2432;--teal:#0b7a75;--teal-dark:#075e5a;--teal-light:#dff3f1;--gold:#e0a91a;--gold-light:#fff3d1;--paper:#f6f5f0;--paper-dark:#ebe9e1;--stone:#5f6b7a;--line:#d9d6cc;
+--p1:#2a5d8f;--p1-light:#e1ecf7;--p2:#7a3e9d;--p2-light:#eee3f5;--card:#fff;--head:#14213d;--sol-bg:#eef7f6;--sol-line:#c6e3df;--note-bg:#fff8e6;--note-line:#ecd9a3;--input:#fff;
+--ok:#2e8b57;--warn:#d9a441;--bad:#c0554a;--ok-light:#e3f3e8;--bad-light:#f9e3e0}
+[data-theme=dark]{--navy:#0b1220;--ink:#e6e8ee;--teal:#5cc8c1;--teal-dark:#8fdcd6;--teal-light:#12302e;--gold:#e8bd4f;--gold-light:#3a2f10;--paper:#121820;--paper-dark:#1a222c;--stone:#a4adba;--line:#2a3441;
+--p1-light:#16283a;--p2-light:#2a1c36;--card:#182029;--head:#e6e8ee;--sol-bg:#152624;--sol-line:#28504b;--note-bg:#2b2716;--note-line:#5a4c22;--input:#0f151c;--ok-light:#183426;--bad-light:#3a1f1c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:'Source Sans 3',Segoe UI,Arial,sans-serif;font-size:17px;color:var(--ink);background:var(--paper);line-height:1.55}
+h1,h2,h3,.brand{font-family:Fraunces,Georgia,'Times New Roman',serif;font-weight:700;letter-spacing:-.01em}
+a{color:var(--teal-dark)}code{background:var(--paper-dark);padding:1px 5px;border-radius:4px;font-size:.9em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+header.top{background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 2px 12px rgba(0,0,0,.18)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;min-height:62px}
+header.top a{color:#fff;text-decoration:none}.brand{font-size:1.25rem;display:flex;align-items:center;gap:10px}.brand .sig{font-family:'Times New Roman',serif;font-style:italic;background:var(--gold);color:#14213d;border-radius:8px;padding:0 8px;font-size:1.1rem}
+header.top nav{display:flex;align-items:center;flex-wrap:wrap}header.top nav a{margin-left:16px;font-size:.94rem;opacity:.9;padding:6px 0;border-bottom:2px solid transparent}header.top nav a:hover,header.top nav a.on{opacity:1;border-color:var(--gold)}
+button.icon-btn{margin-left:16px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;padding:5px 10px;cursor:pointer;font-size:.9rem;font-family:inherit}button.icon-btn:hover{background:rgba(255,255,255,.22)}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#14213d 0%,#1f3a63 55%,#0b7a75 100%);color:#fff;padding:54px 0 48px}
+.hero:before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><g fill='none' stroke='rgba(255,255,255,0.10)' stroke-width='1'><path d='M0 60h120M60 0v120'/><circle cx='60' cy='60' r='40'/><path d='M20 100L100 20'/></g></svg>");opacity:.6}
+.hero .wrap{position:relative}.hero h1{margin:0 0 10px;font-size:2.4rem;line-height:1.15}.hero p{margin:0;max-width:780px;color:rgba(255,255,255,.88);font-size:1.08rem}
+.hero .crumbs{font-size:.9rem;margin-bottom:14px;color:rgba(255,255,255,.75)}.hero .crumbs a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4)}.hero .crumbs span{margin:0 8px;opacity:.6}
+.hero.p1{background:linear-gradient(135deg,#1a3a5c 0%,#2a5d8f 60%,#3f7fb5 100%)}.hero.p2{background:linear-gradient(135deg,#3d1f52 0%,#7a3e9d 60%,#9a5fbf 100%)}
+.hero.small{padding:34px 0 30px}.hero.small h1{font-size:1.9rem}
+.pill{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:3px 12px;font-size:.82rem;margin-right:8px;margin-top:10px}
+main{padding:30px 0 40px}
+h2.sec{font-size:1.55rem;color:var(--head);margin:34px 0 14px;display:flex;align-items:center;gap:12px}h2.sec:after{content:"";flex:1;height:1px;background:var(--line)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}@media(max-width:860px){.grid3{grid-template-columns:1fr}}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}@media(max-width:900px){.grid4{grid-template-columns:1fr 1fr}}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}@media(max-width:860px){.grid2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;box-shadow:0 1px 3px rgba(20,33,61,.06)}
+.card h3{margin:0 0 8px;font-size:1.25rem;color:var(--head)}.card p{margin:0 0 10px;color:var(--stone)}
+.stat{font-family:Fraunces,serif;font-size:2.2rem;color:var(--teal);line-height:1}
+a.btn,button.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;padding:9px 16px;border-radius:8px;font-weight:600;font-size:.95rem;border:0;cursor:pointer;font-family:inherit}a.btn:hover,button.btn:hover{background:var(--teal-dark)}
+[data-theme=dark] a.btn,[data-theme=dark] button.btn{color:#0b1220}
+a.btn.ghost,button.btn.ghost{background:transparent;color:var(--teal-dark);border:1.5px solid var(--teal)}a.btn.ghost:hover,button.btn.ghost:hover{background:var(--teal-light)}
+a.btn.gold,button.btn.gold{background:var(--gold);color:#14213d}
+.paper-head{display:flex;align-items:center;gap:14px;margin:8px 0 14px}.paper-head .tag{white-space:nowrap;font-family:Fraunces,serif;font-size:1.05rem;font-weight:700;color:#fff;border-radius:8px;padding:4px 12px}
+.tag.p1{background:var(--p1)}.tag.p2{background:var(--p2)}.tag.s2{background:var(--teal)}.paper-head span.assessed{color:var(--stone);font-size:.95rem}
+.topic-card{display:flex;gap:16px;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:transform .12s,box-shadow .12s}
+.topic-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(20,33,61,.12)}
+.topic-card .icon{flex:0 0 46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:Fraunces,serif;font-weight:700;font-size:.85rem}
+.icon.part1{background:var(--p1-light);color:var(--p1)}.icon.part2{background:var(--teal-light);color:var(--teal-dark)}.icon.section2{background:var(--p2-light);color:var(--p2)}[data-theme=dark] .icon.part1{color:#8fc3ea}[data-theme=dark] .icon.section2{color:#cfa0e8}
+.topic-card>div:last-child{flex:1;min-width:0}.topic-card h3{margin:0 0 3px;font-size:1.08rem;color:var(--head)}.topic-card .meta{color:var(--stone);font-size:.86rem}
+.links{display:flex;flex-wrap:wrap;gap:6px}.links a{font-size:.82rem;padding:4px 11px;border-radius:999px;text-decoration:none;border:1px solid var(--line);background:var(--paper);color:var(--teal-dark);font-weight:600}
+.links a:hover{background:var(--teal-light);border-color:var(--teal)}
+table.list{border-collapse:collapse;width:100%;margin:10px 0 24px;background:var(--card);border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+table.list th,table.list td{padding:9px 14px;text-align:left;font-size:.95rem;vertical-align:top;border-bottom:1px solid var(--line)}table.list th{background:var(--paper-dark);color:var(--head)}table.list tr:last-child td{border-bottom:0}
+/* questions */
+.q{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin:20px 0;box-shadow:0 1px 3px rgba(20,33,61,.05);border-left-width:5px}
+.q[data-status="1"]{border-left-color:var(--warn)}.q[data-status="2"]{border-left-color:var(--ok)}
+.q .qh{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:10px}
+.q .qh .num{font-family:Fraunces,serif;font-weight:700;color:var(--head);font-size:1.15rem}.q .meta{font-size:.82rem;color:var(--stone)}.q .meta .d{color:var(--gold);letter-spacing:1px}
+.q .qt p{margin:6px 0}.q .disp{margin:8px 0;text-align:center}ol.roman{list-style:none;padding-left:30px;margin:8px 0}ol.roman li{margin:4px 0;position:relative}ol.roman .rn{position:absolute;left:-30px;font-weight:700;width:26px;text-align:right}
+ol.opts{list-style:none;padding:0;margin:12px 0 4px;display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}@media(max-width:720px){ol.opts{grid-template-columns:1fr}}
+ol.opts li{display:flex;gap:10px;align-items:flex-start;padding:8px 12px;border:1px solid var(--line);border-radius:10px;cursor:pointer;background:var(--paper);transition:background .12s,border-color .12s}
+ol.opts li:hover{border-color:var(--teal)}ol.opts li .lt{font-weight:700;font-family:Fraunces,serif;min-width:18px;color:var(--teal-dark)}
+ol.opts li.pick{border-color:var(--p1);background:var(--p1-light)}ol.opts li.right{border-color:var(--ok);background:var(--ok-light)}ol.opts li.wrong{border-color:var(--bad);background:var(--bad-light)}
+.q.done ol.opts li{cursor:default}
+.fb{margin:10px 0 4px;font-weight:700;min-height:1.2em}.fb.ok{color:var(--ok)}.fb.bad{color:var(--bad)}
+details.sol{margin-top:10px;background:var(--sol-bg);border:1px solid var(--sol-line);border-radius:10px;padding:10px 14px}details.sol summary{cursor:pointer;font-weight:700;color:var(--teal-dark)}
+details.sol .src{font-size:.85rem;color:var(--stone);margin-top:8px;border-top:1px dashed var(--sol-line);padding-top:6px}
+.note{background:var(--note-bg);border:1px solid var(--note-line);border-radius:10px;padding:12px 16px;font-size:.95rem}
+footer{background:var(--navy);color:rgba(255,255,255,.75);padding:26px 0;font-size:.88rem;margin-top:40px}footer a{color:#fff}
+/* progress */
+.st{display:inline-flex;gap:4px;margin-left:auto}.st button{font-family:inherit;font-size:.78rem;border:1px solid var(--line);background:var(--paper);color:var(--stone);border-radius:999px;padding:2px 10px;cursor:pointer}
+.st button:hover{border-color:var(--teal)}.st button.on[data-s="1"]{background:var(--warn);color:#222;border-color:var(--warn)}.st button.on[data-s="2"]{background:var(--ok);color:#fff;border-color:var(--ok)}
+.prog{display:flex;align-items:center;gap:10px;font-size:.82rem;color:var(--stone);margin-top:8px}.prog .bar{flex:1;height:8px;background:var(--paper-dark);border-radius:999px;overflow:hidden;display:flex;max-width:260px}
+.prog .bar .ok{background:var(--ok);height:100%}.prog .bar .wk{background:var(--warn);height:100%}.prog .pl{white-space:nowrap;min-width:90px}
+.hero .prog{color:rgba(255,255,255,.85)}.hero .prog .bar{background:rgba(255,255,255,.25)}
+/* filter bar & tools */
+.filterbar{position:sticky;top:var(--hdr,62px);z-index:10;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:10px 0 6px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.filterbar input[type=search]{flex:1 1 200px;font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--input);color:var(--ink)}
+.filterbar label{font-size:.85rem;color:var(--stone);display:inline-flex;align-items:center;gap:4px;cursor:pointer}.chip{border:1px solid var(--line);border-radius:999px;padding:2px 10px;background:var(--paper);color:var(--stone);font-size:.82rem;cursor:pointer;font-family:inherit}
+.chip.on{background:var(--teal);color:#fff;border-color:var(--teal)}.filterbar .cnt{font-size:.85rem;color:var(--stone);margin-left:auto}
+.filterbar select,.qf-controls select,.plan select{font:inherit;font-size:.88rem;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:var(--input);color:var(--ink)}
+.tools{position:sticky;top:var(--hdr,62px);z-index:10;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:10px 0;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.tools .time{font-family:Fraunces,serif;font-size:1.6rem;font-weight:700;color:var(--head);min-width:110px}.tools .time.low{color:var(--bad)}
+.tools .score{font-weight:700;color:var(--teal-dark)}.tools .score b{font-family:Fraunces,serif;font-size:1.3rem}.tools .pct{font-size:.85rem;color:var(--stone)}
+.tools button{font-family:inherit;font-size:.88rem;padding:6px 12px;border-radius:8px;border:1px solid var(--teal);background:transparent;color:var(--teal-dark);cursor:pointer}.tools button.primary{background:var(--teal);color:#fff}
+.q.hide{display:none}
+/* answer grid for papers */
+.agrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin:14px 0}.agrid .cell{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 8px}
+.agrid .cell b{display:inline-block;width:26px;font-family:Fraunces,serif}.agrid .cell .ls{display:inline-flex;gap:2px;flex-wrap:wrap}.agrid .cell .ls button{width:22px;height:22px;border-radius:5px;border:1px solid var(--line);background:var(--paper);font-size:.72rem;cursor:pointer;padding:0;font-family:inherit;color:var(--ink)}
+.agrid .cell .ls button.on{background:var(--p1);color:#fff;border-color:var(--p1)}.agrid .cell.right{border-color:var(--ok);background:var(--ok-light)}.agrid .cell.wrong{border-color:var(--bad);background:var(--bad-light)}.agrid .cell.blank{border-color:var(--warn)}
+.agrid .cell .k{font-size:.75rem;color:var(--stone);margin-left:6px}
+.result{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:14px 0}.result .big{font-family:Fraunces,serif;font-size:2.4rem;color:var(--teal);line-height:1}.result .grade{font-family:Fraunces,serif;font-size:1.6rem;color:var(--gold)}
+.pdfbox{width:100%;height:78vh;border:1px solid var(--line);border-radius:12px;background:#fff}
+/* quick-fire & search */
+.qf-controls{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:10px 0 16px}.qf-controls label{font-size:.9rem;color:var(--stone);display:inline-flex;gap:5px;align-items:center}
+.qf-controls input[type=search]{font:inherit;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--input);color:var(--ink)}
+.kbd{font-size:.8rem;color:var(--stone)}.kbd kbd{border:1px solid var(--line);border-radius:4px;padding:0 5px;background:var(--paper-dark);font-family:inherit}
+.res{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0;text-decoration:none;color:inherit}.res:hover{border-color:var(--teal)}
+.res .t{font-weight:700;color:var(--head)}.res .m{font-size:.82rem;color:var(--stone)}.res .s{font-size:.92rem;margin-top:4px}.res mark{background:#ffe58a;color:#222;border-radius:3px;padding:0 2px}
+.empty{color:var(--stone);font-style:italic}
+#totop{position:fixed;right:18px;bottom:18px;z-index:15;background:var(--teal);color:#fff;border:0;border-radius:50%;width:42px;height:42px;font-size:1.2rem;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .2s}#totop.show{opacity:1;pointer-events:auto}
+.jump{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 4px}.jump a{font-size:.82rem;padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--teal-dark);text-decoration:none;font-weight:600}.jump a:hover{background:var(--teal-light)}
+.real .row{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.95rem}.real .row .ser{font-weight:700;color:var(--head);min-width:150px}.real .row .qn{color:var(--stone);min-width:90px}.real .row .t{flex:1 1 300px}
+.real .row a{font-size:.82rem;padding:2px 9px;border-radius:999px;border:1px solid var(--line);background:var(--paper);text-decoration:none;font-weight:600}
+.plan input[type=date]{font:inherit;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--input);color:var(--ink)}.plan .big{font-family:Fraunces,serif;font-size:2rem;color:var(--teal)}
+table.list td .bar{height:8px;background:var(--paper-dark);border-radius:999px;overflow:hidden;display:flex;width:140px}table.list td .bar .ok{background:var(--ok)}table.list td .bar .wk{background:var(--warn)}
+@media(max-width:720px){header.top{position:static}header.top nav a{margin-left:12px;font-size:.88rem}.filterbar,.tools{top:0}.hero h1{font-size:1.8rem}.hero{padding:34px 0 28px}}
+/* drills, facts */
+.drill{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 26px;margin:14px 0;min-height:160px}
+.drill .term{font-family:Fraunces,serif;font-size:1.35rem;color:var(--head);margin:0 0 6px}.drill .def{font-size:1.05rem;margin:8px 0}.drill .src{font-size:.82rem;color:var(--stone)}
+.drill .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.drill input.ans{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--input);color:var(--ink);width:100%;max-width:420px}
+.drill .fbk{margin-top:8px;font-weight:700}.drill .fbk.ok{color:var(--ok)}.drill .fbk.bad{color:var(--bad)}
+.drill .work{background:var(--paper-dark);border-radius:8px;padding:10px 14px;font-size:.95rem;margin-top:8px}
+.modecard{display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:14px}.modecard .mi{font-size:1.6rem;flex:0 0 40px;text-align:center}.modecard h3{margin:0 0 4px;color:var(--head)}.modecard p{margin:0 0 8px;color:var(--stone)}
+.due{font-size:.85rem;color:var(--stone)}
+/* notes */
+.notes{max-width:900px}.notes h2{font-size:1.4rem;color:var(--head);margin:34px 0 8px;padding-top:8px;border-top:1px solid var(--line)}
+.notes p{margin:8px 0}.notes ul,.notes ol{margin:6px 0 10px 22px;padding:0}.notes li{margin:5px 0}
+.notes .summary{font-size:1.1rem;line-height:1.6;background:var(--teal-light);border-left:4px solid var(--teal);border-radius:0 12px 12px 0;padding:14px 18px;margin:18px 0}
+.nums{background:var(--note-bg);border:1px solid var(--note-line);border-radius:12px;padding:12px 18px;margin:16px 0}.nums h3,.examh h3{margin:0 0 6px;font-size:1.05rem;color:var(--head)}.nums ul{columns:2;column-gap:24px}@media(max-width:720px){.nums ul{columns:1}}
+.examh{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 18px;margin:16px 0}
+.traps{background:var(--bad-light);border:1px solid var(--bad);border-radius:12px;padding:12px 18px;margin:16px 0}.traps h3{margin:0 0 6px;font-size:1.05rem;color:var(--bad)}
+.worked{background:var(--sol-bg);border:1px solid var(--sol-line);border-radius:12px;padding:12px 18px;margin:16px 0}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 18px;margin:14px 0 6px;font-size:.92rem}.toc b{color:var(--head)}.toc a{margin-right:14px;white-space:nowrap;line-height:1.9}
+.nlinks{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+.notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:860px){.notes-grid{grid-template-columns:1fr}}
+.ncard{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;text-decoration:none;color:inherit}.ncard:hover{border-color:var(--teal)}.ncard b{color:var(--head)}.ncard span{display:block;font-size:.85rem;color:var(--stone)}
+table.grades{border-collapse:collapse;font-size:.88rem;background:var(--card);border:1px solid var(--line)}table.grades th,table.grades td{border:1px solid var(--line);padding:3px 8px;text-align:center}table.grades th{background:var(--paper-dark)}
+.katex{font-size:1.06em}
+/* print */
+@media print{header.top,footer,.tools,.filterbar,.st,.pill,.hero .crumbs,.prog,.noprint,#totop{display:none!important}
+body{background:#fff;color:#000;font-size:12pt}.hero{background:#fff!important;color:#000;padding:10px 0}.hero p,.hero h1{color:#000}.hero:before{display:none}
+.q{break-inside:avoid;box-shadow:none;border:1px solid #999;page-break-inside:avoid}details.sol{display:none}body.print-sol details.sol{display:block;background:#f3f3f3}body.print-sol details.sol summary{display:none}
+ol.opts li{background:#fff;border-color:#bbb}a{color:#000;text-decoration:none}}
+</style><script src="../qdata.js"></script></head>
+<body><header class="top"><div class="wrap"><a class="brand" href="../index.html"><span class="sig">&Sigma;</span> TMUA Practice</a>
+<nav><a href="../index.html" class="">Home</a><a href="../topics.html" class="">Topics</a><a href="../notes.html" class="">Notes</a><a href="../papers.html" class="on">Mock papers</a><a href="../official.html" class="">Past papers</a><a href="../practice.html" class="">Practice</a><a href="../planner.html" class="">Planner</a><a href="../search.html" title="Search">&#128269;</a><button class="icon-btn" id="themeBtn">&#9790; Dark</button></nav></div></header>
+<section class="hero p2"><div class="wrap"><div class="crumbs"><a href="../index.html">Home</a><span>&rsaquo;</span><a href="../papers.html">Mock papers</a><span>&rsaquo;</span>Paper 2 Set 10</div><h1>Paper 2 &middot; Set 10</h1><p>Paper 2: Mathematical Reasoning. 20 questions, 75 minutes. Answer on the grid or click the options; nothing is marked until you press <b>Submit</b>.</p><span class="pill">75 minutes</span><span class="pill">20 marks</span><span class="pill">No calculator</span></div></section>
+<main><div class="wrap">
+<div class="tools" id="tools"><span class="time" id="clock">75:00</span><button class="primary" id="startBtn">Start</button><button id="pauseBtn">Pause</button><button id="resetBtn">Reset paper</button>
+<span class="score" id="scoreBox"></span><button class="primary" id="submitBtn" style="margin-left:auto">Submit answers</button><a class="btn ghost" href="../pdf/papers/P2-Set10-QP.pdf" style="padding:6px 12px;font-size:.88rem">PDF</a></div>
+<div class="result" id="result" style="display:none"></div>
+<h3>Answer grid</h3><div class="agrid" id="agrid"><div class="cell" data-n="1"><b>1</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button><button data-l="E">E</button><button data-l="F">F</button></span><span class="k"></span></div><div class="cell" data-n="2"><b>2</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button><button data-l="E">E</button><button data-l="F">F</button></span><span class="k"></span></div><div class="cell" data-n="3"><b>3</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button><button data-l="E">E</button><button data-l="F">F</button></span><span class="k"></span></div><div class="cell" data-n="4"><b>4</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button><button data-l="E">E</button></span><span class="k"></span></div><div class="cell" data-n="5"><b>5</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button><button data-l="E">E</button><button data-l="F">F</button></span><span class="k"></span></div><div class="cell" data-n="6"><b>6</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button></span><span class="k"></span></div><div class="cell" data-n="7"><b>7</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button><button data-l="E">E</button></span><span class="k"></span></div><div class="cell" data-n="8"><b>8</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button><button data-l="E">E</button></span><span class="k"></span></div><div class="cell" data-n="9"><b>9</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button></span><span class="k"></span></div><div class="cell" data-n="10"><b>10</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button><button data-l="E">E</button><button data-l="F">F</button></span><span class="k"></span></div><div class="cell" data-n="11"><b>11</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button><button data-l="E">E</button><button data-l="F">F</button><button data-l="G">G</button><button data-l="H">H</button></span><span class="k"></span></div><div class="cell" data-n="12"><b>12</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button><button data-l="E">E</button><button data-l="F">F</button><button data-l="G">G</button><button data-l="H">H</button></span><span class="k"></span></div><div class="cell" data-n="13"><b>13</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button><button data-l="E">E</button></span><span class="k"></span></div><div class="cell" data-n="14"><b>14</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button><button data-l="E">E</button><button data-l="F">F</button><button data-l="G">G</button><button data-l="H">H</button></span><span class="k"></span></div><div class="cell" data-n="15"><b>15</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button><button data-l="E">E</button><button data-l="F">F</button><button data-l="G">G</button><button data-l="H">H</button></span><span class="k"></span></div><div class="cell" data-n="16"><b>16</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button><button data-l="E">E</button></span><span class="k"></span></div><div class="cell" data-n="17"><b>17</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button><button data-l="E">E</button></span><span class="k"></span></div><div class="cell" data-n="18"><b>18</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button><button data-l="E">E</button><button data-l="F">F</button><button data-l="G">G</button><button data-l="H">H</button></span><span class="k"></span></div><div class="cell" data-n="19"><b>19</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button></span><span class="k"></span></div><div class="cell" data-n="20"><b>20</b><span class="ls"><button data-l="A">A</button><button data-l="B">B</button><button data-l="C">C</button><button data-l="D">D</button><button data-l="E">E</button><button data-l="F">F</button></span><span class="k"></span></div></div>
+<div id="paper" data-nofb data-qids="FUN-14,SEQ-09,POL-11,LGC-13,RSN-07,X2-10,ERR-04,LGC-01,LGC-14,RSN-22,X2-07,SEQ-12,PRF-12,ALG-08,X2-11,RSN-17,ERR-07,PRF-18,X2-02,IND-12"><div class="q" id="FUN-14" data-qid="FUN-14" data-topic="functions" data-ans="D" data-paper="1" data-diff="1" data-tags="">
+<div class="qh"><span class="num">1</span><span class="meta"><a href="../topic/functions.html">Functions and transformations</a> &middot; spec MM8.2 &middot; Paper 1 style &middot; <span class="d" title="difficulty">★☆☆</span></span></div>
+<div class="qt"><p>The graph of \(y = f(x)\) has a maximum point at \((3, 8)\). The graph of \(y = f(x - a) + b\) has its maximum at \((1, 2)\). Find \(a + b\).</p></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>\(8\)</span></li><li data-l="B"><span class="lt">B</span><span>\(-2\)</span></li><li data-l="C"><span class="lt">C</span><span>\(-4\)</span></li><li data-l="D"><span class="lt">D</span><span>\(-8\)</span></li><li data-l="E"><span class="lt">E</span><span>\(4\)</span></li><li data-l="F"><span class="lt">F</span><span>\(0\)</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>The maximum moves from \((3, 8)\) to \((3 + a, 8 + b) = (1, 2)\), so \(a = -2\), \(b = -6\) and \(a + b = -8\).</p></div><div class="src">Answer <b>D</b> &middot; Functions and transformations (MM8.2) &middot; question FUN-14</div></details>
+</div><div class="q" id="SEQ-09" data-qid="SEQ-09" data-topic="sequences-series" data-ans="B" data-paper="1" data-diff="1" data-tags="">
+<div class="qh"><span class="num">2</span><span class="meta"><a href="../topic/sequences-series.html">Sequences and series</a> &middot; spec MM2.2 &middot; Paper 1 style &middot; <span class="d" title="difficulty">★☆☆</span></span></div>
+<div class="qt"><p>How many terms of the arithmetic series \(3 + 7 + 11 + \ldots\) are needed for the sum to first exceed \(500\)?</p></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>\(17\)</span></li><li data-l="B"><span class="lt">B</span><span>\(16\)</span></li><li data-l="C"><span class="lt">C</span><span>\(11\)</span></li><li data-l="D"><span class="lt">D</span><span>\(14\)</span></li><li data-l="E"><span class="lt">E</span><span>\(18\)</span></li><li data-l="F"><span class="lt">F</span><span>\(15\)</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>\(S_n = \frac n2(6 + 4(n-1)) = n(2n + 1)\). \(n = 15\): \(465\); \(n = 16\): \(528 > 500\). So \(16\).</p></div><div class="src">Answer <b>B</b> &middot; Sequences and series (MM2.2) &middot; question SEQ-09</div></details>
+</div><div class="q" id="POL-11" data-qid="POL-11" data-topic="polynomials" data-ans="A" data-paper="1" data-diff="1" data-tags="">
+<div class="qh"><span class="num">3</span><span class="meta"><a href="../topic/polynomials.html">Polynomials, factor and remainder theorems</a> &middot; spec MM1.6 &middot; Paper 1 style &middot; <span class="d" title="difficulty">★☆☆</span></span></div>
+<div class="qt"><p>Find the coefficient of \(x^2\) in the expansion of \((x + 1)(x - 2)(2x + 3)\).</p></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>\(1\)</span></li><li data-l="B"><span class="lt">B</span><span>\(-3\)</span></li><li data-l="C"><span class="lt">C</span><span>\(-2\)</span></li><li data-l="D"><span class="lt">D</span><span>\(-1\)</span></li><li data-l="E"><span class="lt">E</span><span>\(2\)</span></li><li data-l="F"><span class="lt">F</span><span>\(3\)</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>\((x+1)(x-2) = x^2 - x - 2\); multiply by \((2x + 3)\): the \(x^2\) term is \(3x^2 - 2x^2 = x^2\), coefficient \(1\).</p></div><div class="src">Answer <b>A</b> &middot; Polynomials, factor and remainder theorems (MM1.6) &middot; question POL-11</div></details>
+</div><div class="q" id="LGC-13" data-qid="LGC-13" data-topic="logic" data-ans="E" data-paper="1" data-diff="1" data-tags="">
+<div class="qh"><span class="num">4</span><span class="meta"><a href="../topic/logic.html">The logic of arguments</a> &middot; spec Arg4 &middot; Paper 1 style &middot; <span class="d" title="difficulty">★☆☆</span></span></div>
+<div class="qt"><p>Which of the following is the negation of **'\(x > 3\) and \(y \leq 5\)'**?</p></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>\(x < 3\) and \(y > 5\)</span></li><li data-l="B"><span class="lt">B</span><span>\(x < 3\) or \(y \geq 5\)</span></li><li data-l="C"><span class="lt">C</span><span>\(x \leq 3\) or \(y \geq 5\)</span></li><li data-l="D"><span class="lt">D</span><span>\(x \leq 3\) and \(y > 5\)</span></li><li data-l="E"><span class="lt">E</span><span>\(x \leq 3\) or \(y > 5\)</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>Not (\(A\) and \(B\)) is (not \(A\)) or (not \(B\)). Not \(x > 3\) is \(x \leq 3\); not \(y \leq 5\) is \(y > 5\).</p></div><div class="src">Answer <b>E</b> &middot; The logic of arguments (Arg4) &middot; question LGC-13</div></details>
+</div><div class="q" id="RSN-07" data-qid="RSN-07" data-topic="reasoning" data-ans="B" data-paper="1" data-diff="1" data-tags="">
+<div class="qh"><span class="num">5</span><span class="meta"><a href="../topic/reasoning.html">Chains of reasoning</a> &middot; spec Prf5 &middot; Paper 1 style &middot; <span class="d" title="difficulty">★☆☆</span></span></div>
+<div class="qt"><p>The digits \(1\) to \(9\) are placed in a \(3 \times 3\) grid so that every row and every column has the same sum. What is that sum?</p></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>\(45\)</span></li><li data-l="B"><span class="lt">B</span><span>\(15\)</span></li><li data-l="C"><span class="lt">C</span><span>\(20\)</span></li><li data-l="D"><span class="lt">D</span><span>\(18\)</span></li><li data-l="E"><span class="lt">E</span><span>\(12\)</span></li><li data-l="F"><span class="lt">F</span><span>\(10\)</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>The three rows together contain every digit once, so \(3 \times\) (row sum) \(= 1 + 2 + \cdots + 9 = 45\), giving \(15\).</p></div><div class="src">Answer <b>B</b> &middot; Chains of reasoning (Prf5) &middot; question RSN-07</div></details>
+</div><div class="q" id="X2-10" data-qid="X2-10" data-topic="circles" data-ans="A" data-paper="2" data-diff="1" data-tags="fixed">
+<div class="qh"><span class="num">6</span><span class="meta"><a href="../topic/circles.html">Circles and circle theorems</a> &middot; spec MM3.2 &middot; Paper 2 style &middot; <span class="d" title="difficulty">★☆☆</span></span></div>
+<div class="qt"><p>The circle \(C\) has centre \((a, b)\) and radius \(r\). \(P\): '\(r > |b|\)'. \(Q\): '\(C\) crosses the \(x\)-axis at two distinct points'. Which one of the following is true?</p></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>P is necessary and sufficient for Q.</span></li><li data-l="B"><span class="lt">B</span><span>P is necessary but not sufficient for Q.</span></li><li data-l="C"><span class="lt">C</span><span>P is sufficient but not necessary for Q.</span></li><li data-l="D"><span class="lt">D</span><span>P is neither necessary nor sufficient for Q.</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>The distance from the centre to the \(x\)-axis is \(|b|\); the circle cuts the axis twice exactly when this is less than \(r\).</p></div><div class="src">Answer <b>A</b> &middot; Circles and circle theorems (MM3.2) &middot; question X2-10</div></details>
+</div><div class="q" id="ERR-04" data-qid="ERR-04" data-topic="errors" data-ans="A" data-paper="1" data-diff="1" data-tags="fixed">
+<div class="qh"><span class="num">7</span><span class="meta"><a href="../topic/errors.html">Identifying errors in proofs</a> &middot; spec Err1 &middot; Paper 1 style &middot; <span class="d" title="difficulty">★☆☆</span></span></div>
+<div class="qt"><p>Claim: for all real \(x\), if \(x^2 > 9\) then \(x > 3\).</p>
+<ol class='roman'><li><span class='rn'>I</span>Suppose \(x^2 > 9\).</li><li><span class='rn'>II</span>Taking square roots of both sides, \(x > 3\).</li><li><span class='rn'>III</span>This proves the claim.</li></ol>
+<p>Which of the following is true?</p></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>The claim is false; the first error is on line II, since \(x = -4\) satisfies \(x^2 > 9\) but not \(x > 3\).</span></li><li data-l="B"><span class="lt">B</span><span>The claim and proof are both correct.</span></li><li data-l="C"><span class="lt">C</span><span>The claim is true but line II should say \(|x| > 3\) and then deduce \(x > 3\).</span></li><li data-l="D"><span class="lt">D</span><span>The claim is false; the first error is on line I.</span></li><li data-l="E"><span class="lt">E</span><span>The claim is true; the first error is on line III.</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>\(x^2 > 9\) gives \(|x| > 3\), i.e. \(x > 3\) or \(x < -3\). The claim itself is false, and line II is where the invalid deduction happens.</p></div><div class="src">Answer <b>A</b> &middot; Identifying errors in proofs (Err1) &middot; question ERR-04</div></details>
+</div><div class="q" id="LGC-01" data-qid="LGC-01" data-topic="logic" data-ans="A" data-paper="1" data-diff="1" data-tags="fixed">
+<div class="qh"><span class="num">8</span><span class="meta"><a href="../topic/logic.html">The logic of arguments</a> &middot; spec Arg1 &middot; Paper 1 style &middot; <span class="d" title="difficulty">★☆☆</span></span></div>
+<div class="qt"><p>Consider the statement: **if \(n\) is a multiple of \(6\), then \(n\) is a multiple of \(3\).** Which of the following is its contrapositive?</p></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>If \(n\) is not a multiple of \(3\), then \(n\) is not a multiple of \(6\).</span></li><li data-l="B"><span class="lt">B</span><span>If \(n\) is a multiple of \(3\), then \(n\) is a multiple of \(6\).</span></li><li data-l="C"><span class="lt">C</span><span>If \(n\) is not a multiple of \(6\), then \(n\) is not a multiple of \(3\).</span></li><li data-l="D"><span class="lt">D</span><span>\(n\) is a multiple of \(6\) if and only if \(n\) is a multiple of \(3\).</span></li><li data-l="E"><span class="lt">E</span><span>If \(n\) is a multiple of \(3\), then \(n\) is not a multiple of \(6\).</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>The contrapositive of 'if \(A\) then \(B\)' is 'if not \(B\) then not \(A\)'. It is logically equivalent to the original; B is the converse and C is the inverse.</p></div><div class="src">Answer <b>A</b> &middot; The logic of arguments (Arg1) &middot; question LGC-01</div></details>
+</div><div class="q" id="LGC-14" data-qid="LGC-14" data-topic="logic" data-ans="D" data-paper="1" data-diff="1" data-tags="fixed">
+<div class="qh"><span class="num">9</span><span class="meta"><a href="../topic/logic.html">The logic of arguments</a> &middot; spec Arg1 &middot; Paper 1 style &middot; <span class="d" title="difficulty">★☆☆</span></span></div>
+<div class="qt"><p>For a positive integer \(n\), consider the statement: **if \(n\) is prime, then \(n\) is odd.** Which one of the following is true?</p></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>The statement is true and its converse is true.</span></li><li data-l="B"><span class="lt">B</span><span>The statement is true and its converse is false.</span></li><li data-l="C"><span class="lt">C</span><span>The statement is false and its converse is true.</span></li><li data-l="D"><span class="lt">D</span><span>The statement is false and its converse is false.</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>\(n = 2\) is an even prime, so the statement is false. The converse, 'if \(n\) is odd then \(n\) is prime', fails for \(n = 9\).</p></div><div class="src">Answer <b>D</b> &middot; The logic of arguments (Arg1) &middot; question LGC-14</div></details>
+</div><div class="q" id="RSN-22" data-qid="RSN-22" data-topic="reasoning" data-ans="D" data-paper="1" data-diff="1" data-tags="">
+<div class="qh"><span class="num">10</span><span class="meta"><a href="../topic/reasoning.html">Chains of reasoning</a> &middot; spec Prf5 &middot; Paper 1 style &middot; <span class="d" title="difficulty">★☆☆</span></span></div>
+<div class="qt"><p>A \(4 \times 4\) grid of squares is coloured so that every row and every column contains exactly two black squares. How many black squares are there in the grid?</p></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>\(6\)</span></li><li data-l="B"><span class="lt">B</span><span>\(16\)</span></li><li data-l="C"><span class="lt">C</span><span>\(10\)</span></li><li data-l="D"><span class="lt">D</span><span>\(8\)</span></li><li data-l="E"><span class="lt">E</span><span>\(4\)</span></li><li data-l="F"><span class="lt">F</span><span>\(12\)</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>Each of the \(4\) rows contains exactly \(2\) black squares: \(8\) in total.</p></div><div class="src">Answer <b>D</b> &middot; Chains of reasoning (Prf5) &middot; question RSN-22</div></details>
+</div><div class="q" id="X2-07" data-qid="X2-07" data-topic="trig-functions" data-ans="E" data-paper="2" data-diff="1" data-tags="roman">
+<div class="qh"><span class="num">11</span><span class="meta"><a href="../topic/trig-functions.html">Trigonometric functions and equations</a> &middot; spec MM4.6 &middot; Paper 2 style &middot; <span class="d" title="difficulty">★☆☆</span></span></div>
+<div class="qt"><p>Consider the equation \(\sin x = k\) where \(k\) is a real constant. Which of the following statements is/are true?</p>
+<ol class='roman'><li><span class='rn'>I</span>For every \(k\) with \(-1 < k < 1\) the equation has exactly two solutions in \(0 \leq x < 2\pi\).</li><li><span class='rn'>II</span>For \(k = 1\) the equation has exactly one solution in \(0 \leq x < 2\pi\).</li><li><span class='rn'>III</span>For every real \(k\) the equation has at least one solution.</li></ol></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>none of them</span></li><li data-l="B"><span class="lt">B</span><span>I only</span></li><li data-l="C"><span class="lt">C</span><span>II only</span></li><li data-l="D"><span class="lt">D</span><span>III only</span></li><li data-l="E"><span class="lt">E</span><span>I and II only</span></li><li data-l="F"><span class="lt">F</span><span>I and III only</span></li><li data-l="G"><span class="lt">G</span><span>II and III only</span></li><li data-l="H"><span class="lt">H</span><span>I, II and III</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>I and II are read from the graph of \(\sin\) over one period. III is false: \(\sin x = 2\) has no solutions.</p></div><div class="src">Answer <b>E</b> &middot; Trigonometric functions and equations (MM4.6) &middot; question X2-07</div></details>
+</div><div class="q" id="SEQ-12" data-qid="SEQ-12" data-topic="sequences-series" data-ans="F" data-paper="2" data-diff="1" data-tags="roman">
+<div class="qh"><span class="num">12</span><span class="meta"><a href="../topic/sequences-series.html">Sequences and series</a> &middot; spec MM2.3 &middot; Paper 2 style &middot; <span class="d" title="difficulty">★☆☆</span></span></div>
+<div class="qt"><p>Which of the following geometric series is/are convergent?</p>
+<ol class='roman'><li><span class='rn'>I</span>\(1 + 0.9 + 0.81 + \ldots\)</li><li><span class='rn'>II</span>\(3 - 3 + 3 - 3 + \ldots\)</li><li><span class='rn'>III</span>\(100 + 10 + 1 + 0.1 + \ldots\)</li></ol></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>none of them</span></li><li data-l="B"><span class="lt">B</span><span>I only</span></li><li data-l="C"><span class="lt">C</span><span>II only</span></li><li data-l="D"><span class="lt">D</span><span>III only</span></li><li data-l="E"><span class="lt">E</span><span>I and II only</span></li><li data-l="F"><span class="lt">F</span><span>I and III only</span></li><li data-l="G"><span class="lt">G</span><span>II and III only</span></li><li data-l="H"><span class="lt">H</span><span>I, II and III</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>A geometric series converges if and only if \(|r| < 1\). I has \(r = 0.9\), III has \(r = 0.1\): both converge. II has \(r = -1\) and does not converge.</p></div><div class="src">Answer <b>F</b> &middot; Sequences and series (MM2.3) &middot; question SEQ-12</div></details>
+</div><div class="q" id="PRF-12" data-qid="PRF-12" data-topic="proof" data-ans="A" data-paper="1" data-diff="2" data-tags="">
+<div class="qh"><span class="num">13</span><span class="meta"><a href="../topic/proof.html">Mathematical proof</a> &middot; spec Prf2 &middot; Paper 1 style &middot; <span class="d" title="difficulty">★★☆</span></span></div>
+<div class="qt"><p>For a positive integer \(n\) it is known that: (i) if \(n\) is a multiple of \(4\) then \(n\) is not a multiple of \(6\); (ii) \(n\) is a multiple of \(12\) or \(n\) is a multiple of \(4\). What can be deduced?</p></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>The premises are inconsistent unless \(n\) is a multiple of \(4\) but not of \(6\); in particular \(n\) cannot be a multiple of \(12\).</span></li><li data-l="B"><span class="lt">B</span><span>\(n\) is not a multiple of \(4\).</span></li><li data-l="C"><span class="lt">C</span><span>\(n\) is a multiple of \(12\).</span></li><li data-l="D"><span class="lt">D</span><span>\(n\) is a multiple of \(6\).</span></li><li data-l="E"><span class="lt">E</span><span>Nothing can be deduced.</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>If \(n\) were a multiple of \(12\) it would be a multiple of both \(4\) and \(6\), contradicting (i). So by (ii) \(n\) is a multiple of \(4\), and by (i) not a multiple of \(6\).</p></div><div class="src">Answer <b>A</b> &middot; Mathematical proof (Prf2) &middot; question PRF-12</div></details>
+</div><div class="q" id="ALG-08" data-qid="ALG-08" data-topic="gcse-algebra" data-ans="E" data-paper="2" data-diff="2" data-tags="roman">
+<div class="qh"><span class="num">14</span><span class="meta"><a href="../topic/gcse-algebra.html">GCSE algebra</a> &middot; spec M4.19 &middot; Paper 2 style &middot; <span class="d" title="difficulty">★★☆</span></span></div>
+<div class="qt"><p>The \(n\)th term of a sequence is \(\dfrac{n^2 + 1}{2n}\). Which of the following statements is/are true?</p>
+<ol class='roman'><li><span class='rn'>I</span>The \(5\)th term is \(2.6\).</li><li><span class='rn'>II</span>Every term after the first is greater than the previous term.</li><li><span class='rn'>III</span>Some term of the sequence equals \(10\).</li></ol></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>none of them</span></li><li data-l="B"><span class="lt">B</span><span>I only</span></li><li data-l="C"><span class="lt">C</span><span>II only</span></li><li data-l="D"><span class="lt">D</span><span>III only</span></li><li data-l="E"><span class="lt">E</span><span>I and II only</span></li><li data-l="F"><span class="lt">F</span><span>I and III only</span></li><li data-l="G"><span class="lt">G</span><span>II and III only</span></li><li data-l="H"><span class="lt">H</span><span>I, II and III</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>I: \(\frac{26}{10} = 2.6\). II: \(u_n = \frac n2 + \frac{1}{2n}\); \(u_1 = 1\), \(u_2 = 1.25\), and for \(n \geq 1\) the increase \(\frac12 - \frac{1}{2n(n+1)} > 0\), so increasing. III: \(n^2 - 20n + 1 = 0\) has no integer solutions (discriminant \(396\) is not a square), so false.</p></div><div class="src">Answer <b>E</b> &middot; GCSE algebra (M4.19) &middot; question ALG-08</div></details>
+</div><div class="q" id="X2-11" data-qid="X2-11" data-topic="functions" data-ans="F" data-paper="2" data-diff="2" data-tags="roman">
+<div class="qh"><span class="num">15</span><span class="meta"><a href="../topic/functions.html">Functions and transformations</a> &middot; spec MM8.2 &middot; Paper 2 style &middot; <span class="d" title="difficulty">★★☆</span></span></div>
+<div class="qt"><p>Let \(f(x) = x^2\) for all real \(x\), and let \(g\) be the function whose graph is obtained by translating the graph of \(y = f(x)\) by \(2\) units in the positive \(x\)-direction and then reflecting in the \(y\)-axis. Which of the following statements is/are true?</p>
+<ol class='roman'><li><span class='rn'>I</span>\(g(x) = (x + 2)^2\)</li><li><span class='rn'>II</span>\(g(x) = (x - 2)^2\)</li><li><span class='rn'>III</span>The graph of \(g\) has its vertex at \((-2, 0)\)</li></ol></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>none of them</span></li><li data-l="B"><span class="lt">B</span><span>I only</span></li><li data-l="C"><span class="lt">C</span><span>II only</span></li><li data-l="D"><span class="lt">D</span><span>III only</span></li><li data-l="E"><span class="lt">E</span><span>I and II only</span></li><li data-l="F"><span class="lt">F</span><span>I and III only</span></li><li data-l="G"><span class="lt">G</span><span>II and III only</span></li><li data-l="H"><span class="lt">H</span><span>I, II and III</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>Translation gives \((x - 2)^2\); reflecting in the \(y\)-axis replaces \(x\) by \(-x\): \((-x - 2)^2 = (x + 2)^2\), with vertex at \((-2, 0)\).</p></div><div class="src">Answer <b>F</b> &middot; Functions and transformations (MM8.2) &middot; question X2-11</div></details>
+</div><div class="q" id="RSN-17" data-qid="RSN-17" data-topic="reasoning" data-ans="A" data-paper="1" data-diff="2" data-tags="fixed">
+<div class="qh"><span class="num">16</span><span class="meta"><a href="../topic/reasoning.html">Chains of reasoning</a> &middot; spec Prf5 &middot; Paper 1 style &middot; <span class="d" title="difficulty">★★☆</span></span></div>
+<div class="qt"><p>Alice, Ben and Cara each make one statement. Alice: 'Ben is lying.' Ben: 'Cara is lying.' Cara: 'Alice and Ben are both lying.' Exactly one of them is telling the truth. Who is it?</p></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>Ben</span></li><li data-l="B"><span class="lt">B</span><span>Alice</span></li><li data-l="C"><span class="lt">C</span><span>Cara</span></li><li data-l="D"><span class="lt">D</span><span>It cannot be determined.</span></li><li data-l="E"><span class="lt">E</span><span>The situation is impossible.</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>If Alice is truthful then Ben lies, so Cara is truthful: two truth-tellers, impossible. If Cara is truthful then Alice and Ben both lie; but Alice lying means Ben is truthful: contradiction. So Ben is the truth-teller: Cara lies (indeed Ben is not lying) and Alice lies (Ben is not lying), which is consistent.</p></div><div class="src">Answer <b>A</b> &middot; Chains of reasoning (Prf5) &middot; question RSN-17</div></details>
+</div><div class="q" id="ERR-07" data-qid="ERR-07" data-topic="errors" data-ans="A" data-paper="1" data-diff="2" data-tags="fixed">
+<div class="qh"><span class="num">17</span><span class="meta"><a href="../topic/errors.html">Identifying errors in proofs</a> &middot; spec Err2 &middot; Paper 1 style &middot; <span class="d" title="difficulty">★★☆</span></span></div>
+<div class="qt"><p>A student writes the following argument.</p>
+<ol class='roman'><li><span class='rn'>I</span>\(0.1 > 0.01\).</li><li><span class='rn'>II</span>Taking logarithms to base \(10\) of both sides: \(-1 > -2\).</li><li><span class='rn'>III</span>Multiplying both sides by \(\log_{10}\frac12\), which is negative, reverses the inequality: \(-\log_{10}\frac12 < -2\log_{10}\frac12\).</li></ol>
+<p>Which of the following is correct?</p></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>All three lines are correct.</span></li><li data-l="B"><span class="lt">B</span><span>Line II is wrong: taking logarithms reverses an inequality.</span></li><li data-l="C"><span class="lt">C</span><span>Line III is wrong: \(\log_{10}\frac12\) is positive.</span></li><li data-l="D"><span class="lt">D</span><span>Line II is wrong: \(\log_{10} 0.1 = 1\).</span></li><li data-l="E"><span class="lt">E</span><span>Line I is wrong.</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>Logarithms are increasing functions, so line II is valid; \(\log_{10}\frac12 < 0\), so reversing the inequality in line III is correct.</p></div><div class="src">Answer <b>A</b> &middot; Identifying errors in proofs (Err2) &middot; question ERR-07</div></details>
+</div><div class="q" id="PRF-18" data-qid="PRF-18" data-topic="proof" data-ans="E" data-paper="1" data-diff="2" data-tags="roman">
+<div class="qh"><span class="num">18</span><span class="meta"><a href="../topic/proof.html">Mathematical proof</a> &middot; spec Prf2 &middot; Paper 1 style &middot; <span class="d" title="difficulty">★★☆</span></span></div>
+<div class="qt"><p>Every element of a set \(S\) of integers is either a multiple of \(3\) or a multiple of \(5\). Every multiple of \(3\) in \(S\) is negative. \(S\) contains the number \(10\). Which of the following statements must be true?</p>
+<ol class='roman'><li><span class='rn'>I</span>\(S\) contains a positive multiple of \(5\).</li><li><span class='rn'>II</span>\(S\) contains no positive multiple of \(3\).</li><li><span class='rn'>III</span>\(S\) contains a negative number.</li></ol></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>none of them</span></li><li data-l="B"><span class="lt">B</span><span>I only</span></li><li data-l="C"><span class="lt">C</span><span>II only</span></li><li data-l="D"><span class="lt">D</span><span>III only</span></li><li data-l="E"><span class="lt">E</span><span>I and II only</span></li><li data-l="F"><span class="lt">F</span><span>I and III only</span></li><li data-l="G"><span class="lt">G</span><span>II and III only</span></li><li data-l="H"><span class="lt">H</span><span>I, II and III</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>\(10 \in S\) is a positive multiple of \(5\) (I). Multiples of \(3\) in \(S\) are negative, so none is positive (II). III fails: \(S = \{10\}\) satisfies everything.</p></div><div class="src">Answer <b>E</b> &middot; Mathematical proof (Prf2) &middot; question PRF-18</div></details>
+</div><div class="q" id="X2-02" data-qid="X2-02" data-topic="differentiation" data-ans="C" data-paper="2" data-diff="2" data-tags="fixed">
+<div class="qh"><span class="num">19</span><span class="meta"><a href="../topic/differentiation.html">Differentiation</a> &middot; spec MM6.3 &middot; Paper 2 style &middot; <span class="d" title="difficulty">★★☆</span></span></div>
+<div class="qt"><p>Let \(f\) be a polynomial. \(P\): '\(f'(x) > 0\) for all real \(x\)'. \(Q\): '\(f(x) = 0\) has exactly one real root'. Which one of the following is true?</p></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>P is necessary and sufficient for Q.</span></li><li data-l="B"><span class="lt">B</span><span>P is necessary but not sufficient for Q.</span></li><li data-l="C"><span class="lt">C</span><span>P is sufficient but not necessary for Q.</span></li><li data-l="D"><span class="lt">D</span><span>P is neither necessary nor sufficient for Q.</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>If \(f' > 0\) everywhere, \(f\) is strictly increasing and (being an odd-degree polynomial) crosses the axis exactly once: \(P\) is sufficient. But \(f(x) = x^3\) has exactly one root and \(f'(0) = 0\), so \(P\) is not necessary.</p></div><div class="src">Answer <b>C</b> &middot; Differentiation (MM6.3) &middot; question X2-02</div></details>
+</div><div class="q" id="IND-12" data-qid="IND-12" data-topic="indices-surds" data-ans="D" data-paper="2" data-diff="3" data-tags="">
+<div class="qh"><span class="num">20</span><span class="meta"><a href="../topic/indices-surds.html">Indices and surds</a> &middot; spec MM1.1 &middot; Paper 2 style &middot; <span class="d" title="difficulty">★★★</span></span></div>
+<div class="qt"><p>For how many integer values of \(n\) with \(1 \leq n \leq 100\) is \(\sqrt{n} + \sqrt{n+1}\) rational?</p></div>
+<ol class="opts"><li data-l="A"><span class="lt">A</span><span>\(9\)</span></li><li data-l="B"><span class="lt">B</span><span>\(1\)</span></li><li data-l="C"><span class="lt">C</span><span>\(10\)</span></li><li data-l="D"><span class="lt">D</span><span>\(0\)</span></li><li data-l="E"><span class="lt">E</span><span>\(2\)</span></li><li data-l="F"><span class="lt">F</span><span>\(100\)</span></li></ol><div class="fb"></div>
+<details class="sol"><summary>Worked solution</summary><div class="sb"><p>For the sum to be rational, both \(\sqrt n\) and \(\sqrt{n+1}\) would need to be rational (if one is irrational, \(\sqrt n + \sqrt{n+1}\) squared gives \(2n + 1 + 2\sqrt{n(n+1)}\) and \(n(n+1)\) is never a perfect square for \(n \geq 1\) since \(n^2 < n(n+1) < (n+1)^2\)). No two consecutive positive integers are both squares, so the answer is \(0\).</p></div><div class="src">Answer <b>D</b> &middot; Indices and surds (MM1.1) &middot; question IND-12</div></details>
+</div></div>
+<div class="note" style="margin-top:18px">After submitting, every question shows the correct answer and its worked solution; wrong answers are added to your <i>needs work</i> list and correct ones to <i>secure</i>.</div>
+</div></main>
+<footer><div class="wrap">Questions, notes and mock papers written to the UAT-UK <a href="../official/TMUA-Specification.pdf">TMUA Content Specification</a> (October 2026 / January 2027). Official past papers &copy; Cambridge University Press &amp; Assessment / UAT-UK, reproduced for personal revision. This site is not affiliated with UAT-UK. All progress is stored only in this browser.</div></footer>
+<button id="totop" title="Back to top">&uarr;</button>
+<script>
+(function(){
+const LS=k=>{try{return JSON.parse(localStorage.getItem(k)||'null')}catch(e){return null}};
+const SV=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+window.TM={LS,SV};
+/* ---- maths ---- */
+window.TM.math=function(root){root=root||document.body;if(window.renderMathInElement){try{renderMathInElement(root,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false});}catch(e){}}};
+document.addEventListener('DOMContentLoaded',()=>{const go=()=>window.renderMathInElement?window.TM.math():setTimeout(go,60);go();});
+/* ---- theme ---- */
+const root=document.documentElement;
+function applyTheme(t){if(t==='dark')root.dataset.theme='dark';else delete root.dataset.theme;const b=document.getElementById('themeBtn');if(b)b.textContent=t==='dark'?'☀ Light':'☾ Dark';}
+applyTheme(LS('tmua.theme')||'light');
+const tb=document.getElementById('themeBtn');if(tb)tb.onclick=()=>{const t=root.dataset.theme==='dark'?'light':'dark';SV('tmua.theme',t);applyTheme(t);};
+/* ---- progress: 0 untried, 1 needs work, 2 secure; attempts: {n, c, last} ---- */
+let prog=LS('tmua.progress')||{};let att=LS('tmua.attempts')||{};
+window.TM.prog=()=>prog;window.TM.att=()=>att;
+window.TM.setProg=(id,s)=>{if(s)prog[id]=s;else delete prog[id];SV('tmua.progress',prog);window.TM.schedule(id,s);};
+window.TM.record=(id,correct)=>{const a=att[id]||{n:0,c:0};a.n++;if(correct)a.c++;a.last=Date.now();a.ok=correct?1:0;att[id]=a;SV('tmua.attempts',att);};
+function paint(){
+  document.querySelectorAll('.q[data-qid]').forEach(el=>{const s=prog[el.dataset.qid]||0;el.dataset.status=s;el.querySelectorAll('.st button[data-s]').forEach(b=>b.classList.toggle('on',+b.dataset.s===s&&s>0));});
+  document.querySelectorAll('[data-qids]').forEach(el=>{const ids=el.dataset.qids.split(',').filter(Boolean);const n=ids.length;if(!n)return;
+    const ok=ids.filter(i=>prog[i]===2).length,wk=ids.filter(i=>prog[i]===1).length;
+    const o=el.querySelector('.bar .ok'),w=el.querySelector('.bar .wk'),p=el.querySelector('.pl');
+    if(o)o.style.width=(100*ok/n)+'%';if(w)w.style.width=(100*wk/n)+'%';if(p)p.textContent=ok+'/'+n+' secure'+(wk?' · '+wk+' to revisit':'');});
+  const ov=document.getElementById('overall');if(ov){const all=(ov.dataset.qids||'').split(',').filter(Boolean);const ok=all.filter(i=>prog[i]===2).length,wk=all.filter(i=>prog[i]===1).length;ov.querySelector('.stat').textContent=Math.round(100*ok/all.length)+'%';ov.querySelector('.detail').textContent=ok+' secure, '+wk+' to revisit, '+(all.length-ok-wk)+' not attempted of '+all.length+' questions.';}
+}
+window.TM.paint=paint;
+document.addEventListener('click',e=>{const b=e.target.closest('.st button[data-s]');if(!b)return;const q=b.closest('.q');const s=+b.dataset.s;const cur=prog[q.dataset.qid]||0;window.TM.setProg(q.dataset.qid,(s===cur)?0:s);paint();if(window.TM.onFilter)window.TM.onFilter();});
+const rs=document.getElementById('resetProg');if(rs)rs.onclick=()=>{if(confirm('Clear all saved progress, attempts and scores on this browser?')){prog={};att={};SV('tmua.progress',prog);SV('tmua.attempts',att);SV('tmua.srs',{});SV('tmua.scores',{});paint();location.reload();}};
+/* ---- spaced repetition: secure questions return after 1, 3, 7, 14, 30 days ---- */
+const IVL=[1,3,7,14,30];let srs=LS('tmua.srs')||{};
+window.TM.srs=()=>srs;window.TM.isDue=id=>{const r=srs[id];return !r||!r.due||r.due<=Date.now();};
+window.TM.schedule=(id,s)=>{if(s===2){const prev=srs[id]&&srs[id].ivl||0;const i=IVL[Math.min(IVL.indexOf(prev)+1,IVL.length-1)]||1;srs[id]={ivl:i,due:Date.now()+i*86400000};}else delete srs[id];SV('tmua.srs',srs);};
+/* ---- multiple-choice interaction (instant feedback unless the container has data-nofb) ---- */
+window.TM.answer=function(q,letter){
+  if(q.classList.contains('done'))return;
+  const ans=q.dataset.ans;const li=q.querySelector('ol.opts li[data-l="'+letter+'"]');
+  const nofb=q.closest('[data-nofb]');
+  if(nofb){q.querySelectorAll('ol.opts li').forEach(x=>x.classList.remove('pick'));li.classList.add('pick');q.dataset.pick=letter;if(window.TM.onPick)window.TM.onPick(q,letter);return;}
+  q.classList.add('done');const right=letter===ans;
+  q.querySelectorAll('ol.opts li').forEach(x=>{if(x.dataset.l===ans)x.classList.add('right');else if(x.dataset.l===letter)x.classList.add('wrong');});
+  const fb=q.querySelector('.fb');if(fb){fb.textContent=right?'✓ Correct — '+ans:'✗ Not quite — the answer is '+ans;fb.className='fb '+(right?'ok':'bad');}
+  const sol=q.querySelector('details.sol');if(sol&&!right)sol.open=true;
+  window.TM.record(q.dataset.qid,right);
+  if(!prog[q.dataset.qid]||!right)window.TM.setProg(q.dataset.qid,right?2:1);
+  paint();if(window.TM.onFilter)window.TM.onFilter();if(window.TM.onAnswer)window.TM.onAnswer(q,right);
+};
+document.addEventListener('click',e=>{const li=e.target.closest('ol.opts li');if(!li)return;const q=li.closest('.q');if(!q)return;window.TM.answer(q,li.dataset.l);});
+document.addEventListener('keydown',e=>{if(e.target&&e.target.matches&&e.target.matches('input,textarea,select'))return;const k=e.key.toUpperCase();if(!'ABCDEFGH'.includes(k)||k.length!==1)return;const q=window.TM.focusQ?window.TM.focusQ():null;if(q&&q.querySelector('ol.opts li[data-l="'+k+'"]'))window.TM.answer(q,k);});
+/* ---- reveal all solutions / print ---- */
+document.querySelectorAll('[data-showsol]').forEach(b=>b.onclick=()=>document.querySelectorAll('details.sol').forEach(d=>d.open=true));
+document.querySelectorAll('[data-print]').forEach(b=>b.onclick=()=>{document.body.classList.toggle('print-sol',b.dataset.print==='sol');window.print();});
+/* ---- copy link ---- */
+document.addEventListener('click',e=>{const b=e.target.closest('button.lnk');if(!b)return;const id=b.closest('.q').id;const u=location.href.split('#')[0]+'#'+id;(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>{b.textContent='✓';setTimeout(()=>b.textContent='\u{1F517}',1200)},()=>prompt('Link:',u));});
+/* ---- back to top ---- */
+const tt=document.getElementById('totop');if(tt){window.addEventListener('scroll',()=>tt.classList.toggle('show',window.scrollY>600));tt.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});}
+paint();
+/* ---- filter bar (topic pages) ---- */
+const fb=document.getElementById('filterbar');
+if(fb){const qs=[...document.querySelectorAll('.q[data-qid]')];const kw=fb.querySelector('input[type=search]');const chips=[...fb.querySelectorAll('.chip')];const cnt=fb.querySelector('.cnt');
+  const st={paper:'',diff:'',type:'',status:''};
+  chips.forEach(c=>c.onclick=()=>{const g=c.dataset.g;const on=c.classList.contains('on');chips.filter(x=>x.dataset.g===g).forEach(x=>x.classList.remove('on'));if(!on)c.classList.add('on');st[g]=on?'':c.dataset.v;apply();});
+  if(kw)kw.oninput=apply;
+  function apply(){const k=(kw?kw.value:'').trim().toLowerCase();let n=0;qs.forEach(q=>{let ok=true;if(k&&!q.textContent.toLowerCase().includes(k))ok=false;
+    if(st.paper&&q.dataset.paper!==st.paper)ok=false;if(st.diff&&q.dataset.diff!==st.diff)ok=false;if(st.type&&!(q.dataset.tags||'').split(',').includes(st.type))ok=false;
+    if(st.status){const s=prog[q.dataset.qid]||0;if(st.status==='0'&&s!==0)ok=false;if(st.status==='1'&&s!==1)ok=false;if(st.status==='2'&&s!==2)ok=false;}
+    q.classList.toggle('hide',!ok);if(ok)n++;});if(cnt)cnt.textContent=n+' of '+qs.length+' shown';}
+  window.TM.onFilter=apply;apply();}
+/* ---- countdown timer helper: TM.timer(key, seconds, displayEl, onEnd) ---- */
+window.TM.timer=function(key,total,el,onEnd){
+  let s=LS(key)||{left:total,running:false,at:0};
+  function left(){return s.running?Math.max(0,s.left-Math.floor((Date.now()-s.at)/1000)):s.left;}
+  function fmt(t){const m=Math.floor(t/60),ss=t%60;return (m<10?'0':'')+m+':'+(ss<10?'0':'')+ss;}
+  function draw(){const l=left();el.textContent=fmt(l);el.classList.toggle('low',l<300);if(l<=0&&s.running){s.running=false;s.left=0;SV(key,s);if(onEnd)onEnd();}}
+  const t={start(){if(!s.running){s.running=true;s.at=Date.now();SV(key,s);}},pause(){if(s.running){s.left=left();s.running=false;SV(key,s);}},reset(){s={left:total,running:false,at:0};SV(key,s);draw();},
+    used(){return total-left();},running(){return s.running;},draw};
+  setInterval(draw,500);draw();return t;};
+})();
+</script><script>(function(){
+const FILE='P2-Set10',PNO=2;const qs=[...document.querySelectorAll('#paper .q')];const cells=[...document.querySelectorAll('#agrid .cell')];
+const key='tmua.paper.'+FILE;let state=window.TM.LS(key)||{picks:{},done:false};
+function save(){window.TM.SV(key,state);}
+function pick(n,L){if(state.done)return;state.picks[n]=L;save();const c=cells[n-1];c.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.l===L));const q=qs[n-1];q.querySelectorAll('ol.opts li').forEach(x=>x.classList.toggle('pick',x.dataset.l===L));}
+cells.forEach(c=>c.querySelectorAll('button').forEach(b=>b.onclick=()=>pick(+c.dataset.n,b.dataset.l)));
+window.TM.onPick=(q,L)=>pick(qs.indexOf(q)+1,L);
+Object.entries(state.picks).forEach(([n,L])=>pick(+n,L));
+const clock=document.getElementById('clock');const timer=window.TM.timer(key+'.t',4500,clock,()=>{alert('Time is up - your answers will be submitted.');submit();});
+document.getElementById('startBtn').onclick=()=>timer.start();document.getElementById('pauseBtn').onclick=()=>timer.pause();
+document.getElementById('resetBtn').onclick=()=>{if(!confirm('Clear your answers and restart the timer for this paper?'))return;state={picks:{},done:false};save();timer.reset();location.reload();};
+function grade(raw){const G=window.GRADES&&window.GRADES[window.DEFAULT_GRADE_SERIES];if(!G)return null;const t=G[PNO===1?'p1':'p2'];return t?t[Math.max(0,Math.min(20,raw))]:null;}
+function submit(){if(state.done)return;const blanks=qs.filter((q,i)=>!state.picks[i+1]).length;if(blanks&&!confirm(blanks+' question(s) unanswered. Submit anyway? (There is no penalty for guessing!)'))return;
+  state.done=true;save();timer.pause();let score=0;const byTopic={};
+  qs.forEach((q,i)=>{const L=state.picks[i+1];const ans=q.dataset.ans;const right=L===ans;if(right)score++;const c=cells[i];c.classList.add(L?(right?'right':'wrong'):'blank');c.querySelector('.k').textContent='key '+ans;
+    q.classList.add('done');q.querySelectorAll('ol.opts li').forEach(x=>{if(x.dataset.l===ans)x.classList.add('right');else if(x.dataset.l===L)x.classList.add('wrong');});
+    const fb=q.querySelector('.fb');fb.textContent=right?'\u2713 Correct':(L?'\u2717 You chose '+L+'; the answer is '+ans:'\u2013 Not answered; the answer is '+ans);fb.className='fb '+(right?'ok':'bad');
+    const t=q.dataset.topic;byTopic[t]=byTopic[t]||{n:0,c:0};byTopic[t].n++;if(right)byTopic[t].c++;
+    window.TM.record(q.dataset.qid,right);window.TM.setProg(q.dataset.qid,right?2:1);});
+  const g=grade(score);const sc=window.TM.LS('tmua.scores')||{};sc[FILE]={score,grade:g,date:Date.now(),paper:PNO,secs:timer.used()};window.TM.SV('tmua.scores',sc);
+  const rows=Object.entries(byTopic).sort((a,b)=>(a[1].c/a[1].n)-(b[1].c/b[1].n)).map(([t,v])=>'<tr><td><a href="../topic/'+t+'.html">'+window.TOPICS[t].name+'</a></td><td>'+v.c+'/'+v.n+'</td></tr>').join('');
+  const mins=Math.round(timer.used()/60);
+  document.getElementById('result').style.display='block';document.getElementById('result').innerHTML='<div style="display:flex;gap:28px;flex-wrap:wrap;align-items:center"><div><div class="big">'+score+'/20</div><div style="color:var(--stone)">raw score</div></div>'+(g!==null?'<div><div class="grade">'+g.toFixed(1)+'</div><div style="color:var(--stone)">estimated grade ('+window.DEFAULT_GRADE_SERIES+' table)</div></div>':'')+'<div><div class="grade" style="color:var(--teal)">'+mins+' min</div><div style="color:var(--stone)">time used</div></div></div><h3 style="margin:14px 0 6px">By topic (weakest first)</h3><table class="list">'+rows+'</table><p><a href="../planner.html">Open the planner</a> &middot; <a href="../grades.html">Grade tables</a></p>';
+  document.getElementById('scoreBox').innerHTML='<b>'+score+'</b>/20';document.querySelectorAll('details.sol').forEach(d=>d.open=false);document.getElementById('result').scrollIntoView({behavior:'smooth'});window.TM.paint();}
+document.getElementById('submitBtn').onclick=submit;
+if(state.done){state.done=false;submit();}
+})();</script></body></html>
