@@ -127,10 +127,9 @@ def _inline_html(s):
         if is_math:
             out.append(("\\[" + c + "\\]") if disp else ("\\(" + c + "\\)"))
         else:
-            c = html.escape(c, quote=False)
-            c = _BOLD.sub(r"<b>\1</b>", c)
-            out.append(c)
-    return "".join(out)
+            out.append(html.escape(c, quote=False))
+    # Bold is applied after joining so that **...** may span a maths snippet.
+    return _BOLD.sub(r"<b>\1</b>", "".join(out))
 
 
 def to_html(text):
@@ -204,10 +203,8 @@ def _inline_pdf(s, size):
             png, w, h, d = render_math(c, size=size + (1 if disp else 0))
             out.append(f'<img src="{png}" width="{w:.2f}" height="{h:.2f}" valign="{-d:.2f}"/>')
         else:
-            c = html.escape(c, quote=False)
-            c = _BOLD.sub(r"<b>\1</b>", c)
-            out.append(c)
-    return "".join(out)
+            out.append(html.escape(c, quote=False))
+    return _BOLD.sub(r"<b>\1</b>", "".join(out))
 
 
 def to_pdf_blocks(text, size=11.0):
